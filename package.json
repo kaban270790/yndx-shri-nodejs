@@ -1,0 +1,19 @@
+{
+  "name": "yndx-shri-nodejs",
+  "version": "1.0.0",
+  "description": "homework by nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaban270790/yndx-shri-nodejs.git"
+  },
+  "author": "D.Timofeev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaban270790/yndx-shri-nodejs/issues"
+  },
+  "homepage": "https://github.com/kaban270790/yndx-shri-nodejs#readme"
+}
