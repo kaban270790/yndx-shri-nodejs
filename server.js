@@ -6,6 +6,7 @@ const uriReposList = '/api/repos';
 const uriCommitHash = '/api/repos/:repositoryId/commits/:commitHash?';
 const getCommits = require('./src/git/getCommit.js');
 const getReposList = require('./src/getReposList.js');
+const env = require('./src/env.js');
 if (!argv.path || argv.path.length === 0) {
     throw new Error("Empty require argument 'path'");
 }
@@ -38,7 +39,7 @@ const reposDir = pathResolve(__dirname, argv.path);
             res.json({error: reason});
         });
     });
-    server.listen(3000);
+    server.listen(env.SERVER_PORT);
 }).catch(reason => {
     throw new Error(reason);
 });

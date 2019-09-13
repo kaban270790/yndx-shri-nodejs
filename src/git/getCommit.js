@@ -1,5 +1,5 @@
 const {execFile} = require('child_process');
-const countCommitOnPage = 2;
+const env = require('./../env.js');
 /**
  *
  * @param {string} reposDir
@@ -11,7 +11,7 @@ module.exports = (reposDir, commitHash) => {
     const format = [commitDelimiter, '%H', '%at', '%s'].join('%n');
     let options = [
         `--format=${format}`,
-        '-' + countCommitOnPage,
+        '-' + env.PAGE_LIMIT,
     ];
     if (commitHash) {
         options.push(commitHash);

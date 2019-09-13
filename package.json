@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kaban270790/yndx-shri-nodejs#readme",
   "dependencies": {
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "yargs": "^14.0.0"
   }
