@@ -1,0 +1,4 @@
+{
+  "reposList": "/api/repos",
+  "commitList": "/api/repos/:repositoryId/commits/:commitHash?"
+}

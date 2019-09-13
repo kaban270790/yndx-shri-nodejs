@@ -2,8 +2,7 @@ const express = require('express');
 const {argv} = require('yargs');
 const fs = require('fs');
 const {resolve: pathResolve} = require('path');
-const uriReposList = '/api/repos';
-const uriCommitHash = '/api/repos/:repositoryId/commits/:commitHash?';
+const routes = require('./src/routes.json');
 const getCommits = require('./src/git/getCommit.js');
 const getReposList = require('./src/getReposList.js');
 const env = require('./src/env.js');
@@ -23,14 +22,14 @@ const reposDir = pathResolve(__dirname, argv.path);
     }));
 })).then(() => {
     const server = express();
-    server.get(uriReposList, (req, res) => {
+    server.get(routes.reposList, (req, res) => {
         getReposList(reposDir).then(files => {
             res.json(files);
         }).catch(reason => {
             res.end({error: reason});
         });
     });
-    server.get(uriCommitHash, (req, res) => {
+    server.get(routes.commitList, (req, res) => {
         //todo тут бы проверку как минимум на существование папки сделать
         /** @param {{params:{repositoryId:string, commitHash:string}}} req */
         getCommits(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash).then(commits => {
