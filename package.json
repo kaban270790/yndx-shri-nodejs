@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/kaban270790/yndx-shri-nodejs/issues"
   },
-  "homepage": "https://github.com/kaban270790/yndx-shri-nodejs#readme"
+  "homepage": "https://github.com/kaban270790/yndx-shri-nodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "yargs": "^14.0.0"
+  }
 }
