@@ -34,7 +34,7 @@ if (!argv.path || argv.path.length === 0) {
         getReposList(reposDir).then(repositories => {
             res.json({repositories});
         }).catch(error => {
-            res.end({error});
+            res.status(400).end({error});
         });
     });
     server.get(routes.commitList, (req, res) => {
@@ -45,7 +45,7 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({commits});
             })
             .catch(error => {
-                res.json({error});
+                res.status(400).json({error});
             });
     });
     server.get(routes.commitDiff, (req, res) => {
@@ -56,7 +56,7 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({diff});
             })
             .catch(error => {
-                res.json({error});
+                res.status(400).json({error});
             });
     });
     server.get([routes.filesList, routes.filesListRoot], (req, res) => {
@@ -70,7 +70,7 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({files});
             })
             .catch(error => {
-                res.json({error});
+                res.status(400).json({error});
             });
     });
     server.get(routes.fileBlob, (req, res) => {
@@ -83,7 +83,7 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({fileBlob});
             })
             .catch(error => {
-                res.json({error});
+                res.status(400).json({error});
             });
     });
     server.post(routes.cloneRepos, (req, res) => {
@@ -92,7 +92,7 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({result: true});
             })
             .catch((error => {
-                res.json({error});
+                res.status(400).json({error});
             }));
     });
     server.delete(routes.removeRepos, (req, res) => {
