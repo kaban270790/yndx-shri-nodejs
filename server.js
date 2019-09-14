@@ -7,6 +7,7 @@ const getCommits = require('./src/git/getCommit.js');
 const getDiff = require('./src/git/getDiff.js');
 const getReposList = require('./src/getReposList.js');
 const getFileList = require('./src/git/getFileList.js');
+const getFileBlob = require('./src/git/getFileBlob.js');
 const env = require('./src/env.js');
 if (!argv.path || argv.path.length === 0) {
     throw new Error("Empty require argument 'path'");
@@ -64,6 +65,20 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({error: reason});
             });
     });
+    server.get(routes.fileBlob, (req, res) => {
+        /** @param {{params:{repositoryId:string, commitHash:string|undefined, pathToFile:string|undefined}}} req */
+        getFileBlob(
+            pathResolve(reposDir, req.params.repositoryId),
+            req.params.commitHash,
+            req.params.pathToFile)
+            .then(file => {
+                res.json({file});
+            })
+            .catch(reason => {
+                res.json({error: reason});
+            });
+    });
+
     server.listen(env.SERVER_PORT);
 }).catch(reason => {
     throw new Error(reason);

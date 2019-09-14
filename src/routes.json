@@ -3,5 +3,6 @@
   "commitList": "/api/repos/:repositoryId/commits/:commitHash?",
   "commitDiff": "/api/repos/:repositoryId/commits/:commitHash/diff",
   "filesListRoot": "/api/repos/:repositoryId",
-  "filesList": "/api/repos/:repositoryId/tree/:commitHash?/:path([^/]*)?"
+  "filesList": "/api/repos/:repositoryId/tree/:commitHash?/:path([^/]*)?",
+  "fileBlob": "/api/repos/:repositoryId/blob/:commitHash/:pathToFile([^/]*)"
 }
