@@ -11,8 +11,8 @@ const env = require('./src/env.js');
 if (!argv.path || argv.path.length === 0) {
     throw new Error("Empty require argument 'path'");
 }
-const reposDir = pathResolve(__dirname, argv.path);
 (new Promise((resolve, reject) => {
+    const reposDir = pathResolve(__dirname, argv.path);
     fs.stat(reposDir, ((errReposDir, stats) => {
         if (errReposDir) {
             reject(errReposDir.message)
@@ -20,9 +20,10 @@ const reposDir = pathResolve(__dirname, argv.path);
         if (!stats.isDirectory()) {
             reject(`Path ${reposDir} incorrect`);
         }
-        resolve();
+
+        resolve(reposDir);
     }));
-})).then(() => {
+})).then((reposDir) => {
     const server = express();
     server.get(routes.reposList, (req, res) => {
         getReposList(reposDir).then(files => {
