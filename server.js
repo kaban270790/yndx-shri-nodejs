@@ -6,6 +6,7 @@ const routes = require('./src/routes.json');
 const getCommits = require('./src/git/getCommit.js');
 const getDiff = require('./src/git/getDiff.js');
 const getReposList = require('./src/getReposList.js');
+const getFileList = require('./src/git/getFileList.js');
 const env = require('./src/env.js');
 if (!argv.path || argv.path.length === 0) {
     throw new Error("Empty require argument 'path'");
@@ -47,6 +48,20 @@ const reposDir = pathResolve(__dirname, argv.path);
         }).catch(reason => {
             res.json({error: reason});
         });
+    });
+    server.get([routes.filesList, routes.filesListRoot], (req, res) => {
+        //todo тут бы проверку как минимум на существование папки сделать
+        /** @param {{params:{repositoryId:string, commitHash:string|undefined, path:string|undefined}}} req */
+        getFileList(
+            pathResolve(reposDir, req.params.repositoryId),
+            req.params.commitHash || null,
+            req.params.path || null)
+            .then(fileList => {
+                res.json(fileList);
+            })
+            .catch(reason => {
+                res.json({error: reason});
+            });
     });
     server.listen(env.SERVER_PORT);
 }).catch(reason => {
