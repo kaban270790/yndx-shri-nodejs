@@ -31,29 +31,33 @@ if (!argv.path || argv.path.length === 0) {
     const server = express();
     server.use(bodyParser.json());
     server.get(routes.reposList, (req, res) => {
-        getReposList(reposDir).then(files => {
-            res.json(files);
-        }).catch(reason => {
-            res.end({error: reason});
+        getReposList(reposDir).then(repositories => {
+            res.json({repositories});
+        }).catch(error => {
+            res.end({error});
         });
     });
     server.get(routes.commitList, (req, res) => {
         //todo тут бы проверку как минимум на существование папки сделать
         /** @param {{params:{repositoryId:string, commitHash:string}}} req */
-        getCommits(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash).then(commits => {
-            res.json(commits);
-        }).catch(reason => {
-            res.json({error: reason});
-        });
+        getCommits(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash)
+            .then(commits => {
+                res.json({commits});
+            })
+            .catch(error => {
+                res.json({error});
+            });
     });
     server.get(routes.commitDiff, (req, res) => {
         //todo тут бы проверку как минимум на существование папки сделать
         /** @param {{params:{repositoryId:string, commitHash:string}}} req */
-        getDiff(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash).then(dataDiff => {
-            res.json(dataDiff);
-        }).catch(reason => {
-            res.json({error: reason});
-        });
+        getDiff(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash)
+            .then(diff => {
+                res.json({diff});
+            })
+            .catch(error => {
+                res.json({error});
+            });
     });
     server.get([routes.filesList, routes.filesListRoot], (req, res) => {
         //todo тут бы проверку как минимум на существование папки сделать
@@ -62,11 +66,11 @@ if (!argv.path || argv.path.length === 0) {
             pathResolve(reposDir, req.params.repositoryId),
             req.params.commitHash || null,
             req.params.path || null)
-            .then(fileList => {
-                res.json(fileList);
+            .then(files => {
+                res.json({files});
             })
-            .catch(reason => {
-                res.json({error: reason});
+            .catch(error => {
+                res.json({error});
             });
     });
     server.get(routes.fileBlob, (req, res) => {
@@ -75,11 +79,11 @@ if (!argv.path || argv.path.length === 0) {
             pathResolve(reposDir, req.params.repositoryId),
             req.params.commitHash,
             req.params.pathToFile)
-            .then(file => {
-                res.json({file});
+            .then(fileBlob => {
+                res.json({fileBlob});
             })
-            .catch(reason => {
-                res.json({error: reason});
+            .catch(error => {
+                res.json({error});
             });
     });
     server.post(routes.cloneRepos, (req, res) => {
@@ -87,8 +91,8 @@ if (!argv.path || argv.path.length === 0) {
             .then(() => {
                 res.json({result: true});
             })
-            .catch((reason => {
-                res.json({error: reason});
+            .catch((error => {
+                res.json({error});
             }));
     });
     server.delete(routes.removeRepos, (req, res) => {
@@ -96,8 +100,8 @@ if (!argv.path || argv.path.length === 0) {
             .then(() => {
                 res.json({result: true});
             })
-            .catch((reason => {
-                res.json({error: reason});
+            .catch((error => {
+                res.json({error});
             }));
     });
     server.listen(env.SERVER_PORT);
