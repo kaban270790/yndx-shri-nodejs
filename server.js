@@ -87,7 +87,7 @@ if (!argv.path || argv.path.length === 0) {
             });
     });
     server.post(routes.cloneRepos, (req, res) => {
-        gitClone(reposDir, req.params.repositoryId, req.body.url)
+        gitClone(reposDir, req.body.url, req.params.repositoryId || null)
             .then(() => {
                 res.json({result: true});
             })
