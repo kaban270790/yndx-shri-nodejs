@@ -12,6 +12,7 @@ const getFileBlob = require('./src/git/getFileBlob.js');
 const gitClone = require('./src/git/clone.js');
 const removeRepos = require('./src/removeRepos.js');
 const env = require('./src/env.js');
+const checkDirRepository = require('./src/checkDirRepository.js');
 if (!argv.path || argv.path.length === 0) {
     throw new Error("Empty require argument 'path'");
 }
@@ -38,9 +39,8 @@ if (!argv.path || argv.path.length === 0) {
         });
     });
     server.get(routes.commitList, (req, res) => {
-        //todo тут бы проверку как минимум на существование папки сделать
-        /** @param {{params:{repositoryId:string, commitHash:string}}} req */
-        getCommits(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash)
+        checkDirRepository.isExist(reposDir, req.params.repositoryId)
+            .then(reposPath => getCommits(reposPath, req.params.commitHash))
             .then(commits => {
                 res.json({commits});
             })
@@ -49,9 +49,8 @@ if (!argv.path || argv.path.length === 0) {
             });
     });
     server.get(routes.commitDiff, (req, res) => {
-        //todo тут бы проверку как минимум на существование папки сделать
-        /** @param {{params:{repositoryId:string, commitHash:string}}} req */
-        getDiff(pathResolve(reposDir, req.params.repositoryId), req.params.commitHash)
+        checkDirRepository.isExist(reposDir, req.params.repositoryId)
+            .then(reposPath => getDiff(reposPath, req.params.commitHash))
             .then(diff => {
                 res.json({diff});
             })
@@ -60,12 +59,9 @@ if (!argv.path || argv.path.length === 0) {
             });
     });
     server.get([routes.filesList, routes.filesListRoot], (req, res) => {
-        //todo тут бы проверку как минимум на существование папки сделать
-        /** @param {{params:{repositoryId:string, commitHash:string|undefined, path:string|undefined}}} req */
-        getFileList(
-            pathResolve(reposDir, req.params.repositoryId),
-            req.params.commitHash || null,
-            req.params.path || null)
+
+        checkDirRepository.isExist(reposDir, req.params.repositoryId)
+            .then(reposPath => getFileList(reposPath, req.params.commitHash || null, req.params.path || null))
             .then(files => {
                 res.json({files});
             })
@@ -74,11 +70,8 @@ if (!argv.path || argv.path.length === 0) {
             });
     });
     server.get(routes.fileBlob, (req, res) => {
-        /** @param {{params:{repositoryId:string, commitHash:string|undefined, pathToFile:string|undefined}}} req */
-        getFileBlob(
-            pathResolve(reposDir, req.params.repositoryId),
-            req.params.commitHash,
-            req.params.pathToFile)
+        checkDirRepository.isExist(reposDir, req.params.repositoryId)
+            .then(reposPath => getFileBlob(reposPath, req.params.commitHash, req.params.pathToFile))
             .then(fileBlob => {
                 res.json({fileBlob});
             })
@@ -87,7 +80,8 @@ if (!argv.path || argv.path.length === 0) {
             });
     });
     server.post(routes.cloneRepos, (req, res) => {
-        gitClone(reposDir, req.body.url, req.params.repositoryId || null)
+        checkDirRepository.isNotExist(reposDir, req.params.repositoryId)
+            .then(() => gitClone(reposDir, req.body.url, req.params.repositoryId || null))
             .then(() => {
                 res.json({result: true});
             })
@@ -96,7 +90,8 @@ if (!argv.path || argv.path.length === 0) {
             }));
     });
     server.delete(routes.removeRepos, (req, res) => {
-        removeRepos(pathResolve(reposDir, req.params.repositoryId))
+        checkDirRepository.isExist(reposDir, req.params.repositoryId)
+            .then(() => removeRepos(pathResolve(reposDir, req.params.repositoryId)))
             .then(() => {
                 res.json({result: true});
             })
