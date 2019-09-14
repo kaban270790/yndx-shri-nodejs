@@ -11,8 +11,11 @@ module.exports = (reposDir, commitHash) => {
         '--raw'
     ];
     options.unshift('diff');
-    return (new Promise((resolve) => {
-        execFile('git', options, {cwd: reposDir}, (err, data) => {
+    return (new Promise((resolve, reject) => {
+        execFile('git', options, {cwd: reposDir}, (err, data, errMess) => {
+            if (err && errMess) {
+                reject(errMess);
+            }
             let diffFiles = data.split("\n")
                 .reduce((previousValue, currentValue) => {
                     currentValue = currentValue.trim();

@@ -12,9 +12,9 @@ module.exports = (reposDir, commitHash, path) => {
     }
 
     return (new Promise((resolve, reject) => {
-        execFile('git', options, {cwd: reposDir}, (err, data) => {
-            if (err) {
-                reject(err);
+        execFile('git', options, {cwd: reposDir}, (err, data, errMess) => {
+            if (err && errMess) {
+                reject(errMess);
             }
             let fileList = data.split("\n")
                 .filter(value => value.trim().length > 0);

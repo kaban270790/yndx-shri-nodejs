@@ -10,9 +10,9 @@ module.exports = (reposDir) => {
         reposDir
     ];
     return (new Promise((resolve, reject) => {
-        execFile('rm', options, (err, data) => {
-            if (err) {
-                reject(err);
+        execFile('rm', options, (err, data, errMess) => {
+            if (err && errMess) {
+                reject(errMess);
             }
             resolve();
         });

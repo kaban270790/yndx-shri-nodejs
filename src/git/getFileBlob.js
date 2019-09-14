@@ -13,9 +13,9 @@ module.exports = (reposDir, commitHash, path) => {
         `${commitHash}:${path}`
     ];
     return (new Promise((resolve, reject) => {
-        execFile('git', options, {cwd: reposDir}, (err, data) => {
-            if (err) {
-                reject(err);
+        execFile('git', options, {cwd: reposDir}, (err, data, errMess) => {
+            if (err && errMess) {
+                reject(errMess);
             }
             resolve(data);
         });

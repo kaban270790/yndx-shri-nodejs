@@ -18,9 +18,9 @@ module.exports = (reposDir, commitHash) => {
     }
     options.unshift('log');
     return (new Promise((resolve, reject) => {
-        execFile('git', options, {cwd: reposDir}, (err, data) => {
-            if (err) {
-                reject(err);
+        execFile('git', options, {cwd: reposDir}, (err, data, errMess) => {
+            if (err && errMess) {
+                reject(errMess);
             }
             let commits = data.split(commitDelimiter)
                 .map(value => value.trim())
@@ -29,7 +29,7 @@ module.exports = (reposDir, commitHash) => {
                     let commitData = value.trim().split("\n");
                     let hash = commitData.shift();
                     let timestamp = commitData.shift();
-                    let source = commitData.join("/n");//todo подумать над парсингом
+                    let source = commitData.join("/n");
                     return {hash, timestamp, source};
                 });
             resolve(commits);

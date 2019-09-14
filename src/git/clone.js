@@ -14,9 +14,9 @@ module.exports = (dir, name, url) => {
         name
     ];
     return (new Promise((resolve, reject) => {
-        execFile('git', options, {cwd: dir}, (err, data) => {
-            if (err) {
-                reject(err);
+        execFile('git', options, {cwd: dir}, (err, data, errMess) => {
+            if (err && errMess) {
+                reject(errMess);
             }
             resolve();
         });
