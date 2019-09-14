@@ -1,4 +1,5 @@
 {
   "reposList": "/api/repos",
-  "commitList": "/api/repos/:repositoryId/commits/:commitHash?"
+  "commitList": "/api/repos/:repositoryId/commits/:commitHash?",
+  "commitDiff": "/api/repos/:repositoryId/commits/:commitHash/diff"
 }
