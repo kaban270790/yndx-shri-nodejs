@@ -104,6 +104,10 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({error});
             }));
     });
+    server.all('*', (req, res) => {
+        res.status(404)
+            .json({"error": "Not found!"});
+    });
     server.listen(env.SERVER_PORT);
 }).catch(reason => {
     throw new Error(reason);
