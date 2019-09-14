@@ -10,6 +10,7 @@ const getReposList = require('./src/getReposList.js');
 const getFileList = require('./src/git/getFileList.js');
 const getFileBlob = require('./src/git/getFileBlob.js');
 const gitClone = require('./src/git/clone.js');
+const removeRepos = require('./src/removeRepos.js');
 const env = require('./src/env.js');
 if (!argv.path || argv.path.length === 0) {
     throw new Error("Empty require argument 'path'");
@@ -90,7 +91,15 @@ if (!argv.path || argv.path.length === 0) {
                 res.json({error: reason});
             }));
     });
-
+    server.delete(routes.removeRepos, (req, res) => {
+        removeRepos(pathResolve(reposDir, req.params.repositoryId))
+            .then(() => {
+                res.json({result: true});
+            })
+            .catch((reason => {
+                res.json({error: reason});
+            }));
+    });
     server.listen(env.SERVER_PORT);
 }).catch(reason => {
     throw new Error(reason);
