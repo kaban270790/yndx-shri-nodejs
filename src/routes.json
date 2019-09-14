@@ -4,5 +4,6 @@
   "commitDiff": "/api/repos/:repositoryId/commits/:commitHash/diff",
   "filesListRoot": "/api/repos/:repositoryId",
   "filesList": "/api/repos/:repositoryId/tree/:commitHash?/:path([^/]*)?",
-  "fileBlob": "/api/repos/:repositoryId/blob/:commitHash/:pathToFile([^/]*)"
+  "fileBlob": "/api/repos/:repositoryId/blob/:commitHash/:pathToFile([^/]*)",
+  "cloneRepos": "/api/repos/:repositoryId"
 }
