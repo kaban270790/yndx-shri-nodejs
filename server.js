@@ -38,11 +38,11 @@ if (!argv.path || argv.path.length === 0) {
             res.status(400).end({error});
         });
     });
-    server.get(routes.commitList, (req, res) => {
+    server.get([routes.commitList, routes.commitListByPage], (req, res) => {
         checkDirRepository.isExist(reposDir, req.params.repositoryId)
-            .then(reposPath => getCommits(reposPath, req.params.commitHash))
-            .then(commits => {
-                res.json({commits});
+            .then(reposPath => getCommits(reposPath, req.params.commitHash, req.params.page || null))
+            .then(result => {
+                res.json(result);
             })
             .catch(error => {
                 res.status(400).json({error});

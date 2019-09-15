@@ -32,6 +32,7 @@
 }
 ```
 ##GET /api/repos/:repositoryId/commits/:commitHash
+##GET /api/repos/:repositoryId/commits/:commitHash/page/:page
 Возвращает массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием.
 ####Параметры:
 * `repositoryId` - название папки с репозиторием

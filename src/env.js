@@ -10,5 +10,5 @@ if (missingParams.length > 0) {
 }
 module.exports = {
     SERVER_PORT: env.SERVER_PORT,
-    PAGE_LIMIT: env.PAGE_LIMIT,
+    PAGE_LIMIT: parseInt(env.PAGE_LIMIT),
 };
