@@ -31,12 +31,12 @@
    ]
 }
 ```
-##GET /api/repos/:repositoryId/commits/:commitHash
 ##GET /api/repos/:repositoryId/commits/:commitHash/page/:page
 Возвращает массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием.
 ####Параметры:
 * `repositoryId` - название папки с репозиторием
 * `commitHash` - хэш комита или название ветки, параметр не обязательный 
+* `page` - номер страницы, если не указана то считается что это первая страница
 ####Response:
 ```json
 {
@@ -49,6 +49,10 @@
    ]
 }
 ```
+####Примеры запросов:
+* /api/repos/cool-timer/commits/cool-branch
+* /api/repos/cool-timer/commits/cool-branch/page/34
+* /api/repos/cool-timer/commits/page/24
 ##GET /api/repos/:repositoryId/commits/:commitHash/diff
 Возвращает diff коммита в виде строки.
 ####Параметры:
