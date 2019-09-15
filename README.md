@@ -2,20 +2,20 @@
 
 Все запросы возвращают данные в формате json.
 
-###Настройка
+### Настройка
 
 Для первого запуска необходимо в корне создать файл `.env`, содержимое взять из файла `.env.example`, и изменить параметры под собственные требования.
 
-###Запуск
+### Запуск
 
 Для запуска выполнить команду:
 >npm run server --path=:pathToRepositories
 
-####Параметры:
+#### Параметры:
 
 * `pathToRepositories` - путь до рабочей папки, где хранятся репозитории
 
-###API
+### API
 
 В случае ошибки будет возвращен объект с текстом ошибки:
 ```json
@@ -24,11 +24,11 @@
 }
 ```
 
-##GET /api/repos
+## GET /api/repos
 
 Возвращает массив репозиториев, которые имеются в папке.
 
-####Response:
+#### Response:
 ```json
 {
    "repositories": [
@@ -42,17 +42,17 @@
 }
 ```
 
-##GET /api/repos/:repositoryId/commits/:commitHash/page/:page
+## GET /api/repos/:repositoryId/commits/:commitHash/page/:page
 
 Возвращает массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием.
 
-####Параметры:
+#### Параметры:
 
 * `repositoryId` - название папки с репозиторием
 * `commitHash` - хэш комита или название ветки, параметр не обязательный 
 * `page` - номер страницы, если не указана то считается что это первая страница
 
-####Response:
+#### Response:
 
 ```json
 {
@@ -66,21 +66,21 @@
 }
 ```
 
-####Примеры запросов:
+#### Примеры запросов:
 
 * /api/repos/cool-timer/commits/cool-branch
 * /api/repos/cool-timer/commits/cool-branch/page/34
 * /api/repos/cool-timer/commits/page/24
 
-##GET /api/repos/:repositoryId/commits/:commitHash/diff
+## GET /api/repos/:repositoryId/commits/:commitHash/diff
 
 Возвращает diff коммита в виде строки.
 
-####Параметры:
+#### Параметры:
 * `repositoryId` - название папки с репозиторием
 * `commitHash` - хэш комита или название ветки, параметр не обязательный 
 
-####Response:
+#### Response:
 
 ```json
 {
@@ -95,17 +95,17 @@
 }
 ```
 
-##GET /api/repos/:repositoryId(/tree/:commitHash/:path)
+## GET /api/repos/:repositoryId(/tree/:commitHash/:path)
 
 Возвращает содержимое репозитория по названию ветки (или хэшу комита). Параметр repositoryId - название репозитория (оно же - имя папки репозитория). То, что в скобках - опционально, если отсутствует и branchName, и path - отдать актуальное содержимое в корне в главной ветке репозитория.
 
-####Параметры:
+#### Параметры:
 
 * `repositoryId` - название папки с репозиторием
 * `commitHash` - хэш комита или название ветки, параметр обязательный если указан параметр `path` 
 * `path` - путь до папки, структуру которого нужно получить, параметр не обязательный 
 
-####Response:
+#### Response:
 
 ```json
 {
@@ -116,7 +116,7 @@
 }
 ```
 
-####Примеры запросов:
+#### Примеры запросов:
 
 * /api/repos/cool-timer
 * /api/repos/cool-timer/tree/cool-branch/src/components
@@ -124,17 +124,17 @@
 * /api/repos/cool-timer/tree/e1r2r32b321bdad2e1knbh231
 * /api/repos/cool-timer/tree/e1r2r32b321bdad2e1knbh231/src/components
 
-##GET /api/repos/:repositoryId/blob/:commitHash/:pathToFile
+## GET /api/repos/:repositoryId/blob/:commitHash/:pathToFile
 
 Возвращает содержимое конкретного файла, находящегося по пути pathToFile в ветке (или по хэшу коммита) branchName. С используемой памятью должно быть все в порядке.
 
-####Параметры:
+#### Параметры:
 
 * `repositoryId` - название папки с репозиторием
 * `commitHash` - хэш комита или название ветки
 * `pathToFile` - путь до файла, содержимое которого нужно вернуть
 
-####Response:
+#### Response:
 
 ```json
 {
@@ -142,19 +142,19 @@
 }
 ```
 
-####Примеры запросов:
+#### Примеры запросов:
 
 * /api/repos/cool-timer/blob/cool-branch/src/components/Header/index.tsx
 
-##DELETE /api/repos/:repositoryId
+## DELETE /api/repos/:repositoryId
 
 Безвозвратно удаляет репозиторий
 
-####Параметры:
+#### Параметры:
 
 * `repositoryId` - название папки с репозиторием
 
-####Response:
+#### Response:
 
 ```json
 {
@@ -162,19 +162,19 @@
 }
 ```
 
-##POST /api/repos/:repositoryId + { url: ‘repo-url’ }
+## POST /api/repos/:repositoryId + { url: ‘repo-url’ }
 
 Добавляет репозиторий в список, скачивает его по переданной в теле запроса ссылке и добавляет в папку со всеми репозиториями.
 
-####Параметры:
+#### Параметры:
 
 * `repositoryId` - название папки с репозиторием, параметр не обязательный. Если не указан, то репозиторий сколонируется в папку с названием, взятым из имени репозитория
 
-####POST данные в формате `json`:
+#### POST данные в формате `json`:
 
 * `url` - путь до репозитория
 
-####Response:
+#### Response:
 
 ```json
 {
