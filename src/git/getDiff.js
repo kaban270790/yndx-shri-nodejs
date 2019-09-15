@@ -23,19 +23,15 @@ module.exports = (reposDir, commitHash) => {
                         return previousValue;
                     }
                     let valueSplit = currentValue.split("\t");
-                    let mode = valueSplit[0].split(' ').pop()[0];
-                    let filePath;
-                    let commitFile = valueSplit[1];
-                    if (mode === 'R') {
-                        filePath = {
-                            from: commitFile,
-                            to: valueSplit[2],
-                        };
-                    } else {
-                        filePath = commitFile;
+                    let diffData = {
+                        mode: valueSplit[0].split(' ').pop()[0],
+                        filePath: valueSplit[1],
+                        diff: getDiffByPath(reposDir,commitHash,valueSplit[1]),
+                    };
+                    if (diffData.mode === 'R') {
+                        diffData.filePathOld = valueSplit[2];
                     }
-                    let diff = getDiffByPath(reposDir,commitHash,filePath);
-                    previousValue[commitFile] = {filePath, mode, diff};
+                    previousValue[valueSplit[1]] = diffData;
                     return previousValue;
                 }, {});
             resolve(diffFiles);
