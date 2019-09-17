@@ -1,0 +1,16 @@
+.text {
+  color: black;
+  font-family: sans-serif;
+  &_size_14 {
+    font-size: 14px;
+  }
+  &_l-height_18 {
+    line-height: 18px;
+  }
+  &_width-bold {
+    font-weight: bold;
+  }
+  &_margin-r_3 {
+    margin-right: 3px;
+  }
+}

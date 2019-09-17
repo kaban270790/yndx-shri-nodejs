@@ -1,0 +1,52 @@
+.page {
+  width: 100%;
+  padding: 0;
+  min-width: 360px; }
+
+.header {
+  border-bottom: 1px solid #f0f2f3;
+  padding-left: 32px;
+  display: flex; }
+  .header__logo {
+    margin-top: 16px;
+    margin-bottom: 20px; }
+  .header__repository-selector {
+    margin-left: 40px;
+    margin-top: 20px; }
+
+.logo {
+  background: url(logo.svg);
+  width: 118px;
+  height: 20px; }
+
+.text {
+  color: black;
+  font-family: sans-serif; }
+  .text_size_14 {
+    font-size: 14px; }
+  .text_l-height_18 {
+    line-height: 18px; }
+  .text_width-bold {
+    font-weight: bold; }
+  .text_margin-r_3 {
+    margin-right: 3px; }
+
+.selector {
+  display: flex;
+  cursor: pointer;
+  justify-content: flex-start; }
+  .selector__content_border-b {
+    border-bottom: 3px solid #ff4f49; }
+  .selector__arrow {
+    margin-top: 1px;
+    margin-left: 4px;
+    padding: 2px;
+    width: 12px;
+    height: 12px;
+    background: url(arrow.svg) center no-repeat; }
+  .selector__text {
+    display: flex; }
+
+body {
+  padding: 0;
+  margin: 0; }
