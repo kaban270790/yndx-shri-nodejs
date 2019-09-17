@@ -30,6 +30,7 @@ if (!argv.path || argv.path.length === 0) {
     }));
 })).then((reposDir) => {
     const server = express();
+    server.use(express.static('public'));
     server.use(bodyParser.json());
     server.get(routes.reposList, (req, res) => {
         getReposList(reposDir).then(repositories => {
