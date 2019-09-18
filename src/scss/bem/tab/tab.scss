@@ -1,0 +1,18 @@
+.tab {
+  flex-shrink: 0;
+  margin-left: 32px;
+  height: 28px;
+  padding: 0 1px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &__active {
+    border-bottom: 3px solid #FF3029;
+  }
+
+  &__clickable {
+    cursor: pointer;
+  }
+}
