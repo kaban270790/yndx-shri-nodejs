@@ -1,0 +1,29 @@
+@import "../../params";
+
+.footer {
+  display: flex;
+  padding: 18px 20px 14px;
+  justify-content: flex-end;
+  border-top: 1px solid #f0f2f3;
+
+  &__trade-secret {
+    flex-grow: 1;
+    @media screen and (max-width: $endPointTablet) {
+      display: none;
+    }
+  }
+
+  &__ui-version {
+    flex-shrink: 0;
+    margin-right: 32px;
+  }
+
+  &__copyright {
+    flex-shrink: 0;
+    margin-right: 3px;
+  }
+
+  &__yandex-link {
+    flex-shrink: 0;
+  }
+}

@@ -1,16 +1,49 @@
 .text {
   color: black;
   font-family: sans-serif;
-  &_size_14 {
-    font-size: 14px;
+
+  &_size {
+    &_14 {
+      font-size: 14px;
+    }
+
+    &_13 {
+      font-size: 13px;
+    }
   }
-  &_l-height_18 {
-    line-height: 18px;
+
+  &_l-height {
+    &_18 {
+      line-height: 18px;
+    }
+    &_20 {
+      line-height: 20px;
+    }
   }
+
   &_width-bold {
     font-weight: bold;
   }
+
   &_margin-r_3 {
     margin-right: 3px;
+  }
+
+  &_color {
+    &_black {
+      color: #000
+    }
+
+    &_gray {
+      color: #7f8285;
+    }
+
+    &_link {
+      color: #1174e9;
+    }
+  }
+
+  &_underline_non {
+    text-decoration: none;
   }
 }

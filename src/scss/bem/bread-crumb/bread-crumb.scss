@@ -1,0 +1,17 @@
+.bread-crumb {
+  display: flex;
+  padding-bottom: 10px;
+
+  &_border-b {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  &__item {
+
+  }
+
+  &__slash {
+    margin-right: 18px;
+    margin-left: 18px;
+  }
+}
