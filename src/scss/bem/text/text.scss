@@ -38,8 +38,13 @@
     }
   }
 
-  &_width-bold {
-    font-weight: bold;
+  &_width {
+    &_bold {
+      font-weight: bold;
+    }
+    &_normal {
+      font-weight: normal;
+    }
   }
 
   &_margin-r_3 {
@@ -53,6 +58,10 @@
 
     &_gray {
       color: #7f8285;
+    }
+
+    &_light-gray {
+      color: #b8bec3;
     }
 
     &_link {

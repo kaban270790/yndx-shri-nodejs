@@ -38,14 +38,18 @@
     line-height: 20px; }
   .text_l-height_28 {
     line-height: 28px; }
-  .text_width-bold {
+  .text_width_bold {
     font-weight: bold; }
+  .text_width_normal {
+    font-weight: normal; }
   .text_margin-r_3 {
     margin-right: 3px; }
   .text_color_black {
     color: #000; }
   .text_color_gray {
     color: #7f8285; }
+  .text_color_light-gray {
+    color: #b8bec3; }
   .text_color_link {
     color: #1174e9; }
   .text_underline_non {
@@ -125,6 +129,46 @@
     border-bottom: 3px solid #FF3029; }
   .tab__clickable {
     cursor: pointer; }
+
+.table {
+  display: grid;
+  border-collapse: collapse;
+  width: 100%;
+  grid-template-columns: repeat(12, 2fr); }
+  @media screen and (max-width: 360px) {
+    .table {
+      display: flex;
+      flex-direction: column; } }
+  .table__head {
+    display: contents; }
+  .table__body {
+    display: contents; }
+  .table__row {
+    display: contents; }
+  .table__cell {
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; }
+    .table__cell_width_2 {
+      grid-column-start: span 2; }
+    .table__cell_width_4 {
+      grid-column-start: span 4; }
+    .table__cell_border-b_dark {
+      border-bottom: 1px solid #e5e5e5; }
+    .table__cell_border-b_light {
+      border-bottom: 1px solid #f2f2f2; }
+    .table__cell_align_right {
+      justify-content: flex-end; }
+    .table__cell_indent-b_8 {
+      padding-bottom: 8px; }
+    .table__cell_indent-b_12 {
+      padding-bottom: 12px; }
+    .table__cell_indent-t_18 {
+      padding-top: 18px; }
+    .table__cell_indent-h_8 {
+      padding-left: 8px;
+      padding-right: 8px; }
 
 body {
   padding: 0;
