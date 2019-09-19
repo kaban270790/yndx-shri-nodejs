@@ -1,0 +1,18 @@
+.icon-plus {
+  display: flex;
+
+  &__icon {
+    width: 12px;
+    flex-shrink: 0;
+
+    &_margin-r {
+      &_8 {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &__text {
+    flex-grow: 1;
+  }
+}

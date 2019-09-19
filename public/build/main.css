@@ -164,11 +164,33 @@
       padding-bottom: 8px; }
     .table__cell_indent-b_12 {
       padding-bottom: 12px; }
+    .table__cell_indent-t_16 {
+      padding-top: 16px; }
     .table__cell_indent-t_18 {
       padding-top: 18px; }
     .table__cell_indent-h_8 {
       padding-left: 8px;
       padding-right: 8px; }
+
+.icon-plus {
+  display: flex; }
+  .icon-plus__icon {
+    width: 12px;
+    flex-shrink: 0; }
+    .icon-plus__icon_margin-r_8 {
+      margin-right: 8px; }
+  .icon-plus__text {
+    flex-grow: 1; }
+
+.icon-file {
+  background-position: center;
+  background-repeat: no-repeat; }
+  .icon-file_ext_folder {
+    background-image: url(folder.svg); }
+  .icon-file_ext_text {
+    background-image: url(text.svg); }
+  .icon-file_ext_code {
+    background-image: url(code.svg); }
 
 body {
   padding: 0;
