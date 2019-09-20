@@ -63,8 +63,10 @@
   display: flex;
   cursor: pointer;
   justify-content: flex-start; }
-  .selector__content_border-b {
-    border-bottom: 3px solid #ff4f49; }
+  .selector__content {
+    text-decoration: none; }
+    .selector__content_border-b {
+      border-bottom: 3px solid #ff4f49; }
   .selector__arrow {
     margin-top: 1px;
     margin-left: 4px;
@@ -179,9 +181,18 @@
   @media screen and (min-width: 360px) {
     .list_display-pc_none {
       display: none; } }
+  .list_indent-h_22 {
+    padding-right: 22px;
+    padding-left: 22px; }
+  .list_indent-v_6 {
+    padding-top: 6px;
+    padding-bottom: 6px; }
   .list__item_indent-v_5 {
     padding-top: 5px;
     padding-bottom: 5px; }
+  .list__item_indent-v_8 {
+    padding-top: 8px;
+    padding-bottom: 8px; }
   .list__item_border-b_gray {
     border-bottom: 1px solid #e5e5e5; }
     .list__item_border-b_gray:last-child {
@@ -214,6 +225,49 @@
   background-repeat: no-repeat; }
   .icon-nav_arrow_right {
     background-image: url(arrow-right.svg); }
+
+.popup-menu {
+  position: relative;
+  display: none; }
+  .popup-menu:target {
+    display: block; }
+    .popup-menu:target ~ .selector__arrow {
+      transform: rotate(180deg); }
+  .popup-menu__modal {
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    box-shadow: 0 4px 16px rgba(53, 73, 93, 0.2);
+    box-sizing: border-box; }
+    @media screen and (max-width: 700px) {
+      .popup-menu__modal {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100% !important;
+        top: auto;
+        box-shadow: none;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px; } }
+    .popup-menu__modal_width_top-menu {
+      width: 266px; }
+  .popup-menu__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: default; }
+    @media screen and (max-width: 700px) {
+      .popup-menu__overlay {
+        background-color: #00000050; } }
+  .popup-menu__slide-button {
+    width: 42px;
+    height: 4px;
+    background-color: #e5e5e5;
+    margin: 2px auto 16px;
+    border-radius: 10px; }
 
 body {
   padding: 0;

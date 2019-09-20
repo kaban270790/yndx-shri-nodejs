@@ -11,12 +11,31 @@
     }
   }
 
+  &_indent-h {
+    &_22 {
+      padding-right: 22px;
+      padding-left: 22px;
+    }
+  }
+
+  &_indent-v {
+    &_6 {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+
   &__item {
 
     &_indent-v {
       &_5 {
         padding-top: 5px;
         padding-bottom: 5px;
+      }
+
+      &_8 {
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
     }
 

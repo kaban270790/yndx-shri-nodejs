@@ -10,12 +10,32 @@
     <div class="header">
         <div class="header__logo logo"></div>
         <div class="header__repository-selector selector">
-            <div class="selector__content selector__content_border-b">
+            <div id="menu-repositories" class="popup-menu">
+                <a href="#" class="popup-menu__overlay"></a>
+                <div class="popup-menu__modal popup-menu__modal_width_top-menu">
+                    <div class="popup-menu__slide-button"></div>
+                    <div class="list list_indent-h_22 list_indent-v_6">
+                        <a href="#"
+                           class="list__item list__item_indent-v_8 text text_size_14 text_l-height_20 text_underline_non">
+                            Arc
+                        </a>
+                        <a href="#"
+                           class="list__item list__item_indent-v_8 text text_size_14 text_l-height_20 text_underline_non">
+                            My repository
+                        </a>
+                        <a href="#"
+                           class="list__item list__item_indent-v_8 text text_size_14 text_l-height_20 text_underline_non">
+                            Devtools-team repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="#menu-repositories" class="selector__content selector__content_border-b">
                 <div class="selector__text">
                     <span class="text text_margin-r_3 text_size_14 text_l-height_18 text_width_bold">Repository</span>
                     <span class="text text_size_14 text_l-height_18">Arc</span>
                 </div>
-            </div>
+            </a>
             <div class="selector__arrow"></div>
         </div>
     </div>
