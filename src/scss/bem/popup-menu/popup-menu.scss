@@ -30,6 +30,9 @@
       &_top-menu {
         width: 266px;
       }
+      &_branch {
+        width: 320px;
+      }
     }
   }
 
@@ -49,7 +52,10 @@
     width: 42px;
     height: 4px;
     background-color: #e5e5e5;
-    margin: 2px auto 16px;
+    margin: 8px auto 16px;
     border-radius: 10px;
+    @media screen and (min-width: $endPointTablet) {
+      display: none;
+    }
   }
 }
