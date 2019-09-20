@@ -42,13 +42,20 @@
     &_bold {
       font-weight: bold;
     }
+
     &_normal {
       font-weight: normal;
     }
   }
 
-  &_margin-r_3 {
-    margin-right: 3px;
+  &_margin-r {
+    &_8 {
+      margin-right: 8px;
+    }
+
+    &_3 {
+      margin-right: 3px;
+    }
   }
 
   &_color {

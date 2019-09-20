@@ -1,0 +1,33 @@
+@import "../../params";
+
+.list {
+  display: flex;
+  flex-direction: column;
+
+
+  &_display-pc_none {
+    @media screen and (min-width: $endPointMobile) {
+      display: none;
+    }
+  }
+
+  &__item {
+
+    &_indent-v {
+      &_5 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+
+    &_border-b {
+      &_gray {
+        border-bottom: 1px solid #e5e5e5;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

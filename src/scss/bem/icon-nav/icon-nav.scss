@@ -1,0 +1,9 @@
+.icon-nav {
+  background-position: center;
+  background-repeat: no-repeat;
+  &_arrow {
+    &_right {
+      background-image: url(arrow-right.svg);
+    }
+  }
+}
