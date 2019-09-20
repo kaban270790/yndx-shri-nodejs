@@ -1,10 +1,13 @@
 .selector {
   display: flex;
   cursor: pointer;
-  justify-content: flex-start;
+  align-items: stretch;
 
   &__content {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+
     &_border-b {
       border-bottom: 3px solid #ff4f49;
     }
@@ -16,7 +19,19 @@
     padding: 2px;
     width: 12px;
     height: 12px;
-    background: url(arrow.svg) center no-repeat;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: center;
+
+    &_color {
+      &_gray {
+        background-image: url(arrow-gray.svg);
+      }
+
+      &_black {
+        background-image: url(arrow-black.svg);
+      }
+    }
   }
 
   &__text {

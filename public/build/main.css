@@ -11,8 +11,7 @@
     margin-top: 16px;
     margin-bottom: 20px; }
   .header__repository-selector {
-    margin-left: 40px;
-    margin-top: 20px; }
+    margin-left: 40px; }
 
 .logo {
   background: url(logo.svg);
@@ -66,9 +65,11 @@
 .selector {
   display: flex;
   cursor: pointer;
-  justify-content: flex-start; }
+  align-items: stretch; }
   .selector__content {
-    text-decoration: none; }
+    text-decoration: none;
+    display: flex;
+    align-items: center; }
     .selector__content_border-b {
       border-bottom: 3px solid #ff4f49; }
   .selector__arrow {
@@ -77,7 +78,13 @@
     padding: 2px;
     width: 12px;
     height: 12px;
-    background: url(arrow.svg) center no-repeat; }
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: center; }
+    .selector__arrow_color_gray {
+      background-image: url(arrow-gray.svg); }
+    .selector__arrow_color_black {
+      background-image: url(arrow-black.svg); }
   .selector__text {
     display: flex; }
 
