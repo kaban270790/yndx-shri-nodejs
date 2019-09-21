@@ -15,6 +15,11 @@
       &_8 {
         margin-right: 8px;
       }
+
+      &_6 {
+        margin-right: 6px;
+      }
+
       &_12 {
         margin-right: 12px;
       }
@@ -23,5 +28,7 @@
 
   &__text {
     flex-grow: 1;
+    display: flex;
+    align-items: center;
   }
 }

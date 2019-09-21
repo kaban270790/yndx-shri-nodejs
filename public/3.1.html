@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Просмотр деталей файла</title>
+    <title>Страница комита</title>
     <link href="build/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -40,105 +40,25 @@
         </div>
     </div>
     <div class="article">
-        <div class="bread-crumb bread-crumb_border-b">
-            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_color_gray">
-                arcadia
-            </div>
-            <div class="bread-crumb__slash text text_l-height_20 text_size_14 text_color_gray">
-                /
-            </div>
-            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_color_gray">
-                trunk
-            </div>
-            <div class="bread-crumb__slash text text_l-height_20 text_size_14 text_color_gray">
-                /
-            </div>
-            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_color_gray">
-                arcadia
-            </div>
-            <div class="bread-crumb__slash text text_l-height_20 text_size_14 text_color_gray">
-                /
-            </div>
-            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_width_bold">
-                arcanum
-            </div>
-        </div>
-        <div class="branch">
-            <div class="branch__header">
-                <div class="branch__repository-name text text_color_black text_size_24 text_l-height_28">arcadia</div>
-                <div class="branch__branch-name selector">
-                    <div class="popup-menu" id="menu-branch">
-                        <a href="#" class="popup-menu__overlay"></a>
-                        <div class="popup-menu__modal popup-menu__modal_width_branch popup-branch">
-                            <div class="popup-menu__slide-button"></div>
-                            <div class="popup-branch__current">
-                                <div class="text text_size_14 text_l-height_20 text_width_bold text_color_smoky-white">
-                                    Trunk
-                                </div>
-                                <div class="text text_size_13 text_l-height_20 text_color_smoky-white">
-                                    Last commit 4 s ago
-                                </div>
-                            </div>
-                            <div class="popup-branch__separator"></div>
-                            <div class="popup-branch__list list">
-                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
-                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
-                                        users/rudskoy/DEVTOOLS-43865
-                                    </div>
-                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
-                                        Last commit 1 min ago
-                                    </div>
-                                </div>
-                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
-                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
-                                        users/rudskoy/DEVTOOLS-43865
-                                    </div>
-                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
-                                        Last commit 1 min ago
-                                    </div>
-                                </div>
-                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
-                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
-                                        users/rudskoy/DEVTOOLS-43865
-                                    </div>
-                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
-                                        Last commit 1 min ago
-                                    </div>
-                                </div>
-                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
-                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
-                                        users/rudskoy/DEVTOOLS-43865
-                                    </div>
-                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
-                                        Last commit 1 min ago
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="article__head">
+            <div class="article__head-title">
+                <a class="button button_clickable icon-plus article__button-back">
+                    <div class="icon-plus__icon icon-nav icon-nav_arrow_left icon-plus__icon_margin-r_8"></div>
+                    <div class="icon-plus__text text text_size_13 text_l-height_15 text_color_gray">
+                        Back
                     </div>
-                    <a href="#menu-branch" class="selector__content">
-                        <div class="text text_l-height_28 text_size_24 text_color_gray">trunk</div>
-                    </a>
-                    <div class="selector__arrow selector__arrow_color_gray"></div>
+                </a>
+                <div class="text text_color_black text_size_24 text_l-height_28 text_width_bold">
+                    DEVTOOLS-4599: Add option to add extra whitespace between projects
                 </div>
             </div>
-            <div class="branch__last-commit">
-                <span class="text text_color_black text_size_14 text_l-height_20">Last commit</span>
-                <span class="text text_color_link text_size_14 text_l-height_20"> c4d248</span>
-                <span class="text text_color_black text_size_14 text_l-height_20"> on</span>
-                <span class="text text_color_link text_size_14 text_l-height_20"> 20 Oct 2017, 12:24</span>
-                <span class="text text_color_black text_size_14 text_l-height_20"> by </span>
-                <span class="text text_color_black text_size_14 text_l-height_20">
-                    <span class="text__first-symbol">r</span>obot-srch-releaser
-                </span>
-            </div>
-        </div>
-        <div class="tab-list tab-list_border-b">
-            <div class="tab tab__active">
-                <span class="text text_size_16 text_color_black text_l-height_20 text_transform_uppercase">Details</span>
-            </div>
-            <div class="tab tab__clickable">
-                <span class="text text_size_16 text_color_gray text_l-height_20 text_transform_uppercase">History</span>
+            <div class="article__head-button-show-files">
+                <div class="button button_clickable button_b-radius-a_4 button_background_gray icon-plus button_indent-h_12 button_indent-v_6 article__button-show-files">
+                    <div class="icon-plus__icon icon-sandwich icon-plus__icon_margin-r_6"></div>
+                    <div class="icon-plus__text text text_size_13 text_l-height_15 text_color_black">Show files at
+                        r4318347
+                    </div>
+                </div>
             </div>
         </div>
         <div class="article__last-commit text text_size_14 text_l-height_20 text_color_black">
@@ -164,7 +84,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">1</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">#!/usr/bin/env python</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">#!/usr/bin/env
+                                python
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -188,7 +110,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">4</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import platform</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import
+                                platform
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -196,7 +120,8 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">5</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import json</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import json
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -212,7 +137,10 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">7</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">URLS = ['https://proxy.sandbox.yandex-team.ru/453818264', 'http://storage-int.mds.yandex.net/get-sandbox/110738/by_platform.json.453815347']</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">URLS =
+                                ['https://proxy.sandbox.yandex-team.ru/453818264',
+                                'http://storage-int.mds.yandex.net/get-sandbox/110738/by_platform.json.453815347']
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -220,7 +148,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">8</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">MD5 = '7f5a85f9c28d35c3a76d8cea7af51106'</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">MD5 =
+                                '7f5a85f9c28d35c3a76d8cea7af51106'
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -236,7 +166,8 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">10</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">RETRIES = 5</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">RETRIES = 5
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -244,7 +175,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">11</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">HASH_PREFIX = 10</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">HASH_PREFIX =
+                                10
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -260,7 +193,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">13</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">HOME_DIR = os.path.expanduser('~')</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">HOME_DIR =
+                                os.path.expanduser('~')
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -284,7 +219,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">16</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def create_dirs(path):</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def
+                                create_dirs(path):
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -292,7 +229,7 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">17</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    try:</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> try:</div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -300,7 +237,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">18</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        os.makedirs(path)</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">
+                                os.makedirs(path)
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -308,7 +247,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">19</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    except OSError as e:</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> except OSError
+                                as e:
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -316,7 +257,8 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">20</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        import errno</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> import errno
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -332,7 +274,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">22</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        if e.errno != errno.EEXIST:</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> if e.errno !=
+                                errno.EEXIST:
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -340,7 +284,7 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">23</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">            raise</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> raise</div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -356,7 +300,8 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">25</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    return path</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> return path
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -380,7 +325,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">28</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def misc_root():</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def
+                                misc_root():
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -388,7 +335,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">29</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    return create_dirs(os.getenv('YA_CACHE_DIR') or os.path.join(HOME_DIR, '.ya'))</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> return
+                                create_dirs(os.getenv('YA_CACHE_DIR') or os.path.join(HOME_DIR, '.ya'))
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -412,7 +361,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">32</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def tool_root():</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def
+                                tool_root():
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -436,7 +387,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">35</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def create_dirs(path):</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def
+                                create_dirs(path):
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -444,7 +397,7 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">36</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    try:</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> try:</div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -452,7 +405,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">37</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        os.makedirs(path)</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">
+                                os.makedirs(path)
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -460,7 +415,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">38</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    except OSError as e:</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> except OSError
+                                as e:
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -468,7 +425,8 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">39</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        import errno</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> import errno
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -484,7 +442,9 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">41</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        if e.errno != errno.EEXIST:</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> if e.errno !=
+                                errno.EEXIST:
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -492,7 +452,7 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">42</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">            raise</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> raise</div>
                         </div>
                     </div>
                     <div class="diff-row">
@@ -508,7 +468,8 @@
                             <span class="text text_color_dark-gray text_size_12 text_l-height_20">44</span>
                         </div>
                         <div class="diff-row__text">
-                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    return path</div>
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"> return path
+                            </div>
                         </div>
                     </div>
                     <div class="diff-row">

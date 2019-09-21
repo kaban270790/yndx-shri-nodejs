@@ -1,3 +1,26 @@
+@import "../../params";
+
 .article {
   padding: 12px 20px 10px;
+
+  &__button-back {
+    height: 28px;
+    margin-bottom: 12px;
+    @media screen and (min-width: $endPointTablet) {
+      display: none !important;
+    }
+  }
+
+  &__head {
+    display: flex;
+  }
+
+  &__head-button-show-files {
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  &__last-commit {
+    margin-top: 8px;
+  }
 }
