@@ -437,7 +437,8 @@
     padding: 0 16px;
     min-height: 42px;
     align-items: center;
-    display: flex; }
+    display: flex;
+    overflow: hidden; }
     .file-detail__header_wrap {
       flex-wrap: wrap; }
   .file-detail__article_border-b {
