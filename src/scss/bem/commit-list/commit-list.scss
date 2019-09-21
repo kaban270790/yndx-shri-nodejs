@@ -1,0 +1,47 @@
+@import "../../params";
+
+.commit-list {
+  margin-top: 24px;
+
+  &__date {
+    padding: 0 0 14px;
+  }
+
+  &__list {
+  }
+
+  &__item {
+  }
+
+  &__commits {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__commit {
+    padding-bottom: 16px;
+  }
+
+  &__commit-data {
+    flex: 4;
+  }
+
+  &__commit-hash {
+    flex: 1;
+    min-width: 60px;
+    @media screen and (max-width: $endPointTablet) {
+      display: none;
+    }
+  }
+
+  &__commit-diff {
+    flex-shrink: 0;
+  }
+
+  &__commit-diff-icon {
+    display: block;
+    width: 20px;
+    height: 16px;
+    background: url(commit-diff.svg) no-repeat center;
+  }
+}

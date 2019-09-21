@@ -213,9 +213,9 @@
       border-bottom: none; }
 
 .icon-plus {
-  display: flex; }
+  display: flex;
+  position: relative; }
   .icon-plus__icon {
-    width: 12px;
     flex-shrink: 0; }
     .icon-plus__icon_margin-l_8 {
       margin-left: 8px; }
@@ -226,7 +226,8 @@
 
 .icon-file {
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  width: 12px; }
   .icon-file_ext_folder {
     background-image: url(folder.svg); }
   .icon-file_ext_text {
@@ -307,6 +308,54 @@
         color: black; }
       .popup-branch__list_hovering:hover > .text:last-child {
         color: #434445; }
+
+.commit-list {
+  margin-top: 24px; }
+  .commit-list__date {
+    padding: 0 0 14px; }
+  .commit-list__commits {
+    display: flex;
+    flex-direction: column; }
+  .commit-list__commit {
+    padding-bottom: 16px; }
+  .commit-list__commit-data {
+    flex: 4; }
+  .commit-list__commit-hash {
+    flex: 1;
+    min-width: 60px; }
+    @media screen and (max-width: 700px) {
+      .commit-list__commit-hash {
+        display: none; } }
+  .commit-list__commit-diff {
+    flex-shrink: 0; }
+  .commit-list__commit-diff-icon {
+    display: block;
+    width: 20px;
+    height: 16px;
+    background: url(commit-diff.svg) no-repeat center; }
+
+.commit {
+  display: flex; }
+  .commit__committer-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url(commiter-photo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px; }
+  .commit__line-link {
+    width: 2px;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #b8bec3;
+    bottom: -14px;
+    top: 42px;
+    left: 19px; }
+    .commit__line-link__header_margin-b_2 {
+      margin-bottom: 2px; }
+    .commit__line-link__article_margin-b_4 {
+      margin-bottom: 4px; }
 
 body {
   padding: 0;

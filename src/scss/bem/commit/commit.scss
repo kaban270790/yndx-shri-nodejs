@@ -1,0 +1,39 @@
+.commit {
+  display: flex;
+
+  &__committer-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url(commiter-photo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
+  }
+
+  &__line-link {
+    width: 2px;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #b8bec3;
+    bottom: -14px;
+    top: 42px;
+    left: 19px;
+
+    &__header {
+      &_margin-b {
+        &_2 {
+          margin-bottom: 2px;
+        }
+      }
+    }
+
+    &__article {
+      &_margin-b {
+        &_4 {
+          margin-bottom: 4px;
+        }
+      }
+    }
+  }
+}
