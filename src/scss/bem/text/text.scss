@@ -15,6 +15,10 @@
       font-size: 16px;
     }
 
+    &_12 {
+      font-size: 12px;
+    }
+
     &_13 {
       font-size: 13px;
     }
@@ -98,5 +102,11 @@
 
   &_transform_uppercase {
     text-transform: uppercase;
+  }
+
+  &_white-space {
+    &_pre-wrap {
+      white-space: pre-wrap;
+    }
   }
 }

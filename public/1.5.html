@@ -155,7 +155,368 @@
                 <div class="file-detail__button_download"></div>
             </div>
             <div class="file-detail__article file-detail__article_border-b file-detail__article_border-l file-detail__article_border-r">
-
+                <div class="file-detail__content">
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">1</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">#!/usr/bin/env python</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">2</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import os</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">3</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import sys</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">4</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import platform</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">5</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">import json</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">6</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">7</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">URLS = ['https://proxy.sandbox.yandex-team.ru/453818264', 'http://storage-int.mds.yandex.net/get-sandbox/110738/by_platform.json.453815347']</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">8</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">MD5 = '7f5a85f9c28d35c3a76d8cea7af51106'</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">9</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">10</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">RETRIES = 5</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">11</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">HASH_PREFIX = 10</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">12</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">13</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">HOME_DIR = os.path.expanduser('~')</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">14</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">15</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">16</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def create_dirs(path):</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">17</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    try:</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">18</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        os.makedirs(path)</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">19</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    except OSError as e:</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">20</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        import errno</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">21</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">22</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        if e.errno != errno.EEXIST:</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">23</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">            raise</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">24</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">25</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    return path</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">26</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">27</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">28</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def misc_root():</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">29</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    return create_dirs(os.getenv('YA_CACHE_DIR') or os.path.join(HOME_DIR, '.ya'))</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">30</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">31</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">32</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def tool_root():</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">33</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">34</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">35</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">def create_dirs(path):</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">36</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    try:</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">37</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        os.makedirs(path)</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">38</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    except OSError as e:</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">39</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        import errno</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">40</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">41</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">        if e.errno != errno.EEXIST:</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">42</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">            raise</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">43</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">44</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap">    return path</div>
+                        </div>
+                    </div>
+                    <div class="diff-row">
+                        <div class="diff-row__line-num">
+                            <span class="text text_color_dark-gray text_size_12 text_l-height_20">45</span>
+                        </div>
+                        <div class="diff-row__text">
+                            <div class="text text_size_12 text_l-height_20   text_white-space_pre-wrap"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

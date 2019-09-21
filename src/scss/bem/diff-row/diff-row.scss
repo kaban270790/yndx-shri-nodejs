@@ -1,0 +1,26 @@
+.diff-row {
+  display: flex;
+
+  &_background {
+    &_remove {
+      background-color: #ffeee0;
+    }
+
+    &_add {
+      background-color: #e6ffed;
+    }
+  }
+
+  &__line-num {
+    width: 38px;
+    margin-right: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__text {
+    flex-grow: 1;
+  }
+}
