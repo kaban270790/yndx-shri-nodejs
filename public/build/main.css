@@ -19,7 +19,6 @@
   height: 20px; }
 
 .text {
-  color: black;
   font-family: sans-serif; }
   .text__first-symbol {
     color: #FF3029; }
@@ -530,6 +529,51 @@
     @media screen and (max-width: 700px) {
       .switcher-rows__buttons {
         display: none; } }
+
+.code {
+  color: var(--codeDefailtColor);
+  font-weight: var(--codeDefailtWidth); }
+  .code_ext_make {
+    --codeDefailtColor: #00234b;
+    --codeDefailtWidth: lighter;
+    --codeCommentColor: #8694a2;
+    --codeCommentWidth: var(--codeDefailtWidth);
+    --codeStringColor: #005fba;
+    --codeStringWidth: var(--codeDefailtWidth);
+    --codeWordColor: var(--codeDefailtColor);
+    --codeWordWidth: bold;
+    --codeFunctionColor: #005fba;
+    --codeFunctionWidth: bold;
+    --codeTypeColor: #005fba;
+    --codeTypeWidth: bold; }
+  .code_ext_java {
+    --codeDefailtColor: #000;
+    --codeDefailtWidth: lighter;
+    --codeCommentColor: #008f00;
+    --codeCommentWidth: var(--codeDefailtWidth);
+    --codeStringColor: #005fba;
+    --codeStringWidth: var(--codeDefailtWidth);
+    --codeWordColor: #0433ff;
+    --codeWordWidth: var(--codeDefailtWidth);
+    --codeFunctionColor: #b4261a;
+    --codeFunctionWidth: var(--codeDefailtWidth);
+    --codeTypeColor: #b4261a;
+    --codeTypeWidth: var(--codeDefailtWidth); }
+  .code__comment {
+    color: var(--codeCommentColor);
+    font-weight: var(--codeCommentWidth); }
+  .code__string {
+    color: var(--codeStringColor);
+    font-weight: var(--codeStringWidth); }
+  .code__word {
+    color: var(--codeWordColor);
+    font-weight: var(--codeWordWidth); }
+  .code__function {
+    color: var(--codeFunctionColor);
+    font-weight: var(--codeFunctionWidth); }
+  .code__type {
+    color: var(--codeTypeColor);
+    font-weight: var(--codeTypeWidth); }
 
 body {
   padding: 0;
