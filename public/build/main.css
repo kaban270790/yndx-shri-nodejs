@@ -176,6 +176,8 @@
       grid-column-start: span 2; }
     .table__cell_width_4 {
       grid-column-start: span 4; }
+    .table__cell_width_6 {
+      grid-column-start: span 6; }
     .table__cell_border-b_dark {
       border-bottom: 1px solid #e5e5e5; }
     .table__cell_border-b_light {
@@ -247,9 +249,16 @@
 
 .icon-nav {
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  width: 10px; }
   .icon-nav_arrow_right {
     background-image: url(arrow-right.svg); }
+
+.icon-branch {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 9px;
+  background-image: url(icon-branch.svg); }
 
 .popup-menu {
   position: relative;

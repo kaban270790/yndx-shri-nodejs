@@ -30,12 +30,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &_width_2 {
-      grid-column-start: span 2;
-    }
-
-    &_width_4 {
-      grid-column-start: span 4;
+    &_width {
+      &_2 {
+        grid-column-start: span 2;
+      }
+      &_4 {
+        grid-column-start: span 4;
+      }
+      &_6 {
+        grid-column-start: span 6;
+      }
     }
 
     &_border-b {
