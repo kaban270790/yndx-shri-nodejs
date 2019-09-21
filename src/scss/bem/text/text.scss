@@ -46,6 +46,10 @@
     &_normal {
       font-weight: normal;
     }
+
+    &_lighter {
+      font-weight: lighter;
+    }
   }
 
   &_margin-r {
@@ -69,6 +73,10 @@
 
     &_light-gray {
       color: #b8bec3;
+    }
+
+    &_dark-gray {
+      color: #999;
     }
 
     &_link {

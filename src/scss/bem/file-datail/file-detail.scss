@@ -1,0 +1,46 @@
+.file-detail {
+  margin-top: 16px;
+
+  &__header {
+    border: 1px solid #e5e5e5;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #f5f5f5;
+    padding: 0 16px;
+    height: 42px;
+    align-items: center;
+    display: flex;
+  }
+
+  &__article {
+    &_border-b {
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    &_border-r {
+      border-right: 1px solid #e5e5e5;
+    }
+
+    &_border-l {
+      border-left: 1px solid #e5e5e5;
+    }
+  }
+
+  &__file-name {
+    margin-right: 4px;
+  }
+
+  &__button_download {
+    margin-left: auto;
+    width: 38px;
+    height: 28px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(icon-download.svg);
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+}

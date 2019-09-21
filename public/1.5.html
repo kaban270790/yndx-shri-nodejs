@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Просмотр деталей файла</title>
+    <link href="build/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <div class="header__logo logo"></div>
+        <div class="header__repository-selector selector">
+            <div id="menu-repositories" class="popup-menu">
+                <a href="#" class="popup-menu__overlay"></a>
+                <div class="popup-menu__modal popup-menu__modal_width_top-menu">
+                    <div class="popup-menu__slide-button"></div>
+                    <div class="list list_indent-h_22 list_indent-v_6">
+                        <a href="#"
+                           class="list__item list__item_indent-v_8 text text_size_14 text_l-height_20 text_underline_non">
+                            Arc
+                        </a>
+                        <a href="#"
+                           class="list__item list__item_indent-v_8 text text_size_14 text_l-height_20 text_underline_non">
+                            My repository
+                        </a>
+                        <a href="#"
+                           class="list__item list__item_indent-v_8 text text_size_14 text_l-height_20 text_underline_non">
+                            Devtools-team repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="#menu-repositories" class="selector__content selector__content_border-b">
+                <div class="selector__text">
+                    <span class="text text_margin-r_3 text_size_14 text_l-height_18 text_width_bold">Repository</span>
+                    <span class="text text_size_14 text_l-height_18">Arc</span>
+                </div>
+            </a>
+            <div class="selector__arrow selector__arrow_color_black"></div>
+        </div>
+    </div>
+    <div class="article">
+        <div class="bread-crumb bread-crumb_border-b">
+            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_color_gray">
+                arcadia
+            </div>
+            <div class="bread-crumb__slash text text_l-height_20 text_size_14 text_color_gray">
+                /
+            </div>
+            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_color_gray">
+                trunk
+            </div>
+            <div class="bread-crumb__slash text text_l-height_20 text_size_14 text_color_gray">
+                /
+            </div>
+            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_color_gray">
+                arcadia
+            </div>
+            <div class="bread-crumb__slash text text_l-height_20 text_size_14 text_color_gray">
+                /
+            </div>
+            <div class="bread-crumb__item text text_l-height_20 text_size_14 text_width_bold">
+                arcanum
+            </div>
+        </div>
+        <div class="branch">
+            <div class="branch__header">
+                <div class="branch__repository-name text text_color_black text_size_24 text_l-height_28">arcadia</div>
+                <div class="branch__branch-name selector">
+                    <div class="popup-menu" id="menu-branch">
+                        <a href="#" class="popup-menu__overlay"></a>
+                        <div class="popup-menu__modal popup-menu__modal_width_branch popup-branch">
+                            <div class="popup-menu__slide-button"></div>
+                            <div class="popup-branch__current">
+                                <div class="text text_size_14 text_l-height_20 text_width_bold text_color_smoky-white">
+                                    Trunk
+                                </div>
+                                <div class="text text_size_13 text_l-height_20 text_color_smoky-white">
+                                    Last commit 4 s ago
+                                </div>
+                            </div>
+                            <div class="popup-branch__separator"></div>
+                            <div class="popup-branch__list list">
+                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
+                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
+                                        users/rudskoy/DEVTOOLS-43865
+                                    </div>
+                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
+                                        Last commit 1 min ago
+                                    </div>
+                                </div>
+                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
+                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
+                                        users/rudskoy/DEVTOOLS-43865
+                                    </div>
+                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
+                                        Last commit 1 min ago
+                                    </div>
+                                </div>
+                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
+                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
+                                        users/rudskoy/DEVTOOLS-43865
+                                    </div>
+                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
+                                        Last commit 1 min ago
+                                    </div>
+                                </div>
+                                <div class="list__item list__item_indent-v_8 list_indent-h_12 popup-branch__list_hovering">
+                                    <div class="text text_size_14 text_l-height_20 text_color_blue-gray">
+                                        users/rudskoy/DEVTOOLS-43865
+                                    </div>
+                                    <div class="text text_size_13 text_l-height_20 text_color_gray">
+                                        Last commit 1 min ago
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#menu-branch" class="selector__content">
+                        <div class="text text_l-height_28 text_size_24 text_color_gray">trunk</div>
+                    </a>
+                    <div class="selector__arrow selector__arrow_color_gray"></div>
+                </div>
+            </div>
+            <div class="branch__last-commit">
+                <span class="text text_color_black text_size_14 text_l-height_20">Last commit</span>
+                <span class="text text_color_link text_size_14 text_l-height_20"> c4d248</span>
+                <span class="text text_color_black text_size_14 text_l-height_20"> on</span>
+                <span class="text text_color_link text_size_14 text_l-height_20"> 20 Oct 2017, 12:24</span>
+                <span class="text text_color_black text_size_14 text_l-height_20"> by </span>
+                <span class="text text_color_black text_size_14 text_l-height_20">
+                    <span class="text__first-symbol">r</span>obot-srch-releaser
+                </span>
+            </div>
+        </div>
+        <div class="tab-list tab-list_border-b">
+            <div class="tab tab__active">
+                <span class="text text_size_16 text_color_black text_l-height_20 text_transform_uppercase">Details</span>
+            </div>
+            <div class="tab tab__clickable">
+                <span class="text text_size_16 text_color_gray text_l-height_20 text_transform_uppercase">History</span>
+            </div>
+        </div>
+        <div class="file-detail">
+            <div class="file-detail__header">
+                <div class="file-detail__file-name icon-plus">
+                    <div class="icon-plus__icon icon-plus__icon_margin-r_12 icon-file icon-file_ext_code"></div>
+                    <div class="icon-plus__text text text_color_black text_size_14 text_l-height_20">
+                        ya.make
+                    </div>
+                </div>
+                <div class="file-detail__file-size text text_color_dark-gray text_size_13 text_l-height_20 text_width_lighter">
+                    (4 347 bytes)
+                </div>
+                <div class="file-detail__button_download"></div>
+            </div>
+            <div class="file-detail__article file-detail__article_border-b file-detail__article_border-l file-detail__article_border-r">
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer__trade-secret text text_color_gray text_size_13">
+            Trade secrets of Yandex LLC. 16, Lev Tolstoy Str., Moscow, Russia, 119021
+        </div>
+        <div class="footer__ui-version text text_color_gray text_size_13">
+            UI: 0.1.15
+        </div>
+        <div class="footer__copyright text text_color_gray text_size_13">
+            &copy; 2017 - 2019
+        </div>
+        <a class="footer__yandex-link text text_color_gray text_size_13 text_color_link text_underline_non"
+           href="https://ya.ru/">
+            Yandex
+        </a>
+    </div>
+</div>
+<script src="build/main.js"></script>
+</body>
+</html>
