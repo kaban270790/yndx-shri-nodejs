@@ -1,0 +1,46 @@
+@import "../../params";
+.switcher-rows {
+  background-color: #f1f8ff;
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+
+  &__info {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+  }
+
+  &__icon-below {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 13px;
+
+    &_deactivate {
+      background-image: url(icon-arrow-down-row-gray.svg);
+    }
+  }
+
+  &__icon-above {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 13px;
+
+    &_active {
+      background-image: url(icon-arrow-top-row-black.svg);
+    }
+  }
+
+  &__button-below {
+    margin-right: 32px;
+  }
+
+  &__buttons {
+    margin: 0 auto;
+    display: flex;
+    @media screen and (max-width: $endPointTablet){
+      display: none;
+    }
+  }
+}

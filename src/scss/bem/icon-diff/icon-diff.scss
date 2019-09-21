@@ -1,0 +1,11 @@
+.icon-diff {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 13px;
+
+  &_mode {
+    &_m {
+      background-image: url(icon-diff-m.svg);
+    }
+  }
+}

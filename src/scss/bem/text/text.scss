@@ -29,6 +29,10 @@
   }
 
   &_l-height {
+    &_13 {
+      line-height: 13px;
+    }
+
     &_15 {
       line-height: 15px;
     }
@@ -61,12 +65,20 @@
   }
 
   &_margin-r {
+    &_3 {
+      margin-right: 3px;
+    }
+
     &_8 {
       margin-right: 8px;
     }
 
-    &_3 {
-      margin-right: 3px;
+    &_16 {
+      margin-right: 16px;
+    }
+
+    &_24 {
+      margin-right: 24px;
     }
   }
 
@@ -97,6 +109,14 @@
 
     &_blue-gray {
       color: #434445;
+    }
+
+    &_cnt-add {
+      color: #19bc4d;
+    }
+
+    &_cnt-remove {
+      color: #ff3029;
     }
   }
 
