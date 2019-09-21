@@ -3,6 +3,7 @@
 .popup-menu {
   position: relative;
   display: none;
+  z-index: 1;
   &:target {
     display: block;
     & ~ .selector__arrow {
