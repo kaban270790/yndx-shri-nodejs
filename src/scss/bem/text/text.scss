@@ -119,12 +119,16 @@
     }
   }
 
-  &-underline_non {
-    text-decoration: none;
+  &-underline {
+    &-non {
+      text-decoration: none;
+    }
   }
 
-  &-transform_uppercase {
-    text-transform: uppercase;
+  &-transform {
+    &-uppercase {
+      text-transform: uppercase;
+    }
   }
 
   &-whiteSpace {
