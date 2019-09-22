@@ -5,9 +5,13 @@
 
 .Header {
   border-bottom: 1px solid #f0f2f3;
-  padding-left: 32px;
   display: flex; }
+  @media screen and (min-width: 700px) {
+    .Header {
+      padding-left: 16px;
+      padding-right: 16px; } }
   .Header-Logo {
+    margin-left: 16px;
     margin-top: 16px;
     margin-bottom: 20px; }
   .Header-RepositorySelector {
@@ -127,7 +131,8 @@
     flex-shrink: 0; }
 
 .Article {
-  padding: 12px 20px 10px; }
+  padding-top: 12px;
+  padding-bottom: 10px; }
   .Article-ButtonBack {
     height: 28px;
     margin-bottom: 12px; }
@@ -135,15 +140,21 @@
       .Article-ButtonBack {
         display: none !important; } }
   .Article-Head {
-    display: flex; }
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px; }
   .Article-HeadButtonShowFiles {
     margin-left: auto;
     flex-shrink: 0; }
   .Article-LastCommit {
-    margin-top: 8px; }
+    margin-top: 8px;
+    margin-right: 20px;
+    margin-left: 20px; }
 
 .BreadCrumb {
   display: flex;
+  margin-right: 20px;
+  margin-left: 20px;
   padding-bottom: 10px;
   margin-bottom: 12px; }
   .BreadCrumb-borderB {
@@ -153,7 +164,9 @@
     margin-left: 18px; }
 
 .Branch {
-  margin-bottom: 18px; }
+  margin-bottom: 18px;
+  margin-right: 20px;
+  margin-left: 20px; }
   .Branch-RepositoryName {
     margin-right: 4px; }
   .Branch-Header {
@@ -161,6 +174,8 @@
     margin-bottom: 10px; }
 
 .TabList {
+  margin-right: 20px;
+  margin-left: 20px;
   display: flex; }
   .TabList-borderB {
     border-bottom: 1px solid #e5e5e5; }
@@ -178,9 +193,10 @@
     cursor: pointer; }
 
 .Table {
+  margin-right: 20px;
+  margin-left: 20px;
   display: grid;
   border-collapse: collapse;
-  width: 100%;
   grid-template-columns: repeat(12, 2fr); }
   @media screen and (max-width: 700px) {
     .Table-displayTablet-none {
@@ -261,8 +277,11 @@
       margin-right: 12px; }
   .IconPlus-Text {
     flex-grow: 1;
-    display: flex;
-    align-items: center; }
+    display: flex; }
+    .IconPlus-Text-align-center {
+      align-items: center; }
+    .IconPlus-Text-align-left {
+      align-items: flex-start; }
 
 .IconFile {
   background-position: center;
@@ -373,7 +392,9 @@
         color: #434445; }
 
 .CommitList {
-  margin-top: 24px; }
+  margin-top: 24px;
+  margin-right: 20px;
+  margin-left: 20px; }
   .CommitList-Date {
     padding: 0 0 14px; }
   .CommitList-Commits {
@@ -425,6 +446,10 @@
 
 .FileDetail {
   margin-top: 16px; }
+  @media screen and (min-width: 700px) {
+    .FileDetail {
+      margin-right: 20px;
+      margin-left: 20px; } }
   .FileDetail-mode-preview {
     --borderColor: #e5e5e5;
     --backgroundColor: #f5f5f5; }
@@ -581,6 +606,10 @@
 .Readme {
   padding-right: 32px;
   padding-left: 32px; }
+
+.TableMobile {
+  margin-right: 20px;
+  margin-left: 20px; }
 
 body {
   padding: 0;

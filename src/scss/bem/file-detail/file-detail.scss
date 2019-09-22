@@ -1,5 +1,11 @@
+@import "../../params";
+
 .FileDetail {
   margin-top: 16px;
+  @media screen and (min-width: $endPointTablet) {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
 
   &-mode {
     &-preview {

@@ -1,7 +1,8 @@
 @import "../../params";
 
 .Article {
-  padding: 12px 20px 10px;
+  padding-top: 12px;
+  padding-bottom: 10px;
 
   &-ButtonBack {
     height: 28px;
@@ -13,6 +14,8 @@
 
   &-Head {
     display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 
   &-HeadButtonShowFiles {
@@ -22,5 +25,7 @@
 
   &-LastCommit {
     margin-top: 8px;
+    margin-right: 20px;
+    margin-left: 20px;
   }
 }
