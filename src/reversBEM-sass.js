@@ -47,66 +47,27 @@ const readDir = function (dir) {
 
 function replace(code) {
     let data = `${code}`;
-
-    let map = {
-        "__a": "-A",
-        "__b": "-B",
-        "__c": "-C",
-        "__d": "-D",
-        "__e": "-E",
-        "__f": "-F",
-        "__g": "-G",
-        "__h": "-H",
-        "__i": "-I",
-        "__j": "-J",
-        "__k": "-K",
-        "__l": "-L",
-        "__m": "-M",
-        "__n": "-N",
-        "__o": "-O",
-        "__p": "-P",
-        "__q": "-Q",
-        "__r": "-R",
-        "__s": "-S",
-        "__t": "-T",
-        "__u": "-U",
-        "__v": "-V",
-        "__w": "-W",
-        "__x": "-X",
-        "__y": "-Y",
-        "__z": "-Z",
-        "\\.a": ".A",
-        "\\.b": ".B",
-        "\\.c": ".C",
-        "\\.d": ".D",
-        "\\.e": ".E",
-        "\\.f": ".F",
-        "\\.g": ".G",
-        "\\.h": ".H",
-        "\\.i": ".I",
-        "\\.j": ".J",
-        "\\.k": ".K",
-        "\\.l": ".L",
-        "\\.m": ".M",
-        "\\.n": ".N",
-        "\\.o": ".O",
-        "\\.p": ".P",
-        "\\.q": ".Q",
-        "\\.r": ".R",
-        "\\.s": ".S",
-        "\\.t": ".T",
-        "\\.u": ".U",
-        "\\.v": ".V",
-        "\\.w": ".W",
-        "\\.x": ".X",
-        "\\.y": ".Y",
-        "\\.z": ".Z",
-    };
-
-    for (let key in map) {
-        let regexp = new RegExp(`(${key})`, "g");
-        data = data.replace(regexp, map[key]);
-    }
+    data = data.split("\n").map((str) => {
+        if (/^\.[a-z]/.test(str)) {
+            str = str.replace(/(^\.[a-z])|(\-[a-z])/g, function (symbol) {
+                return symbol.toLocaleUpperCase().replace('-', '');
+            });
+        } else if (/&__[a-z]/.test(str)) {
+            str = str.replace(/(&__[a-z])|(\-[a-z])/g, function (symbol) {
+                return symbol.toLocaleUpperCase().replace('-', '').replace('__', '-');
+            });
+        } else if (/&_[a-z0-9]/.test(str)) {
+            let first = true;
+            str = str.replace(/(&_[a-z])|(\-[a-z])/g, function (symbol) {
+                if (first === true) {
+                    first = false;
+                    return symbol;
+                }
+                return symbol.toLocaleUpperCase();
+            }).replace('-', '').replace('_', '-');
+        }
+        return str;
+    }).join("\n");
 
     return data;
 }
