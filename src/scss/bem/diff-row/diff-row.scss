@@ -1,17 +1,17 @@
-.diff-row {
+.DiffRow {
   display: flex;
 
-  &_background {
-    &_remove {
+  &-background {
+    &-remove {
       background-color: #ffeee0;
     }
 
-    &_add {
+    &-add {
       background-color: #e6ffed;
     }
   }
 
-  &__line-num {
+  &-LineNum {
     width: 38px;
     margin-right: 32px;
     flex-shrink: 0;
@@ -20,7 +20,7 @@
     justify-content: flex-end;
   }
 
-  &__text {
+  &-Text {
     flex-grow: 1;
   }
 }

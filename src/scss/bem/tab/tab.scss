@@ -1,4 +1,4 @@
-.tab {
+.Tab {
   flex-shrink: 0;
   margin-left: 32px;
   height: 28px;
@@ -8,11 +8,11 @@
     margin-left: 0;
   }
 
-  &__active {
+  &-Active {
     border-bottom: 3px solid #FF3029;
   }
 
-  &__clickable {
+  &-Clickable {
     cursor: pointer;
   }
 }

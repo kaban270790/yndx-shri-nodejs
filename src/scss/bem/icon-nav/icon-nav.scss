@@ -1,12 +1,12 @@
-.icon-nav {
+.IconNav {
   background-position: center;
   background-repeat: no-repeat;
   width: 10px;
-  &_arrow {
-    &_right {
+  &-arrow {
+    &-right {
       background-image: url(arrow-right.svg);
     }
-    &_left {
+    &-left {
       background-image: url(arrow-left.svg);
     }
   }

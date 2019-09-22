@@ -1,32 +1,32 @@
 @import "../../params";
 
-.commit-list {
+.CommitList {
   margin-top: 24px;
 
-  &__date {
+  &-Date {
     padding: 0 0 14px;
   }
 
-  &__list {
+  &-List {
   }
 
-  &__item {
+  &-Item {
   }
 
-  &__commits {
+  &-Commits {
     display: flex;
     flex-direction: column;
   }
 
-  &__commit {
+  &-Commit {
     padding-bottom: 16px;
   }
 
-  &__commit-data {
+  &-CommitData {
     flex: 4;
   }
 
-  &__commit-hash {
+  &-CommitHash {
     flex: 1;
     min-width: 60px;
     @media screen and (max-width: $endPointTablet) {
@@ -34,11 +34,11 @@
     }
   }
 
-  &__commit-diff {
+  &-CommitDiff {
     flex-shrink: 0;
   }
 
-  &__commit-diff-icon {
+  &-CommitDiffIcon {
     display: block;
     width: 20px;
     height: 16px;

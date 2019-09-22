@@ -1,25 +1,25 @@
-.button {
-  &_clickable {
+.Button {
+  &-clickable {
     cursor: pointer;
   }
-  &_background {
-    &_gray {
+  &-background {
+    &-gray {
       background-color: #e6e6e6;
     }
   }
-  &_b-radius-a {
-    &_4 {
+  &-bRadius-A {
+    &-4 {
       border-radius: 4px;
     }
   }
-  &_indent-h {
-    &_12 {
+  &-indentH {
+    &-12 {
       padding-left: 12px;
       padding-right: 12px;
     }
   }
-  &_indent-v {
-    &_6 {
+  &-indentV {
+    &-6 {
       padding-top: 6px;
       padding-bottom: 6px;
     }

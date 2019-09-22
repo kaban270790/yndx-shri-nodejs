@@ -1,6 +1,6 @@
 @import "../../params";
 
-.popup-menu {
+.PopupMenu {
   position: relative;
   display: none;
   z-index: 1;
@@ -10,7 +10,7 @@
       transform: rotate(180deg);
     }
   }
-  &__modal {
+  &-Modal {
     background-color: #fff;
     position: absolute;
     left: 0;
@@ -27,17 +27,17 @@
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
-    &_width {
-      &_top-menu {
+    &-width {
+      &-topMenu {
         width: 266px;
       }
-      &_branch {
+      &-branch {
         width: 320px;
       }
     }
   }
 
-  &__overlay {
+  &-Overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -49,7 +49,7 @@
     }
   }
 
-  &__slide-button {
+  &-SlideButton {
     width: 42px;
     height: 4px;
     background-color: #e5e5e5;

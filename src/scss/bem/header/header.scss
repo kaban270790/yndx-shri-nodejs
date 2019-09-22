@@ -1,14 +1,14 @@
-.header {
+.Header {
   border-bottom: 1px solid #f0f2f3;
   padding-left: 32px;
   display: flex;
 
-  &__logo {
+  &-Logo {
     margin-top: 16px;
     margin-bottom: 20px;
   }
 
-  &__repository-selector {
+  &-RepositorySelector {
     margin-left: 40px;
   }
 }

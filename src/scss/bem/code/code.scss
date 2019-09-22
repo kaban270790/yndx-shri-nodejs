@@ -1,6 +1,6 @@
-.code {
-  &_ext {
-    &_make {
+.Code {
+  &-ext {
+    &-make {
       --codeDefailtColor: #00234b;
       --codeDefailtWidth: lighter;
       --codeCommentColor: #8694a2;
@@ -15,7 +15,7 @@
       --codeTypeWidth: bold;
     }
 
-    &_java {
+    &-java {
       --codeDefailtColor: #000;
       --codeDefailtWidth: lighter;
       --codeCommentColor: #008f00;
@@ -34,23 +34,23 @@
   color: var(--codeDefailtColor);
   font-weight: var(--codeDefailtWidth);
 
-  &__comment {
+  &-Comment {
     color: var(--codeCommentColor);
     font-weight: var(--codeCommentWidth);
   }
-  &__string {
+  &-String {
     color: var(--codeStringColor);
     font-weight: var(--codeStringWidth);
   }
-  &__word {
+  &-Word {
     color: var(--codeWordColor);
     font-weight: var(--codeWordWidth);
   }
-  &__function {
+  &-Function {
     color: var(--codeFunctionColor);
     font-weight: var(--codeFunctionWidth);
   }
-  &__type {
+  &-Type {
     color: var(--codeTypeColor);
     font-weight: var(--codeTypeWidth);
   }

@@ -1,7 +1,7 @@
-.commit {
+.Commit {
   display: flex;
 
-  &__committer-photo {
+  &-CommitterPhoto {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -11,7 +11,7 @@
     margin-right: 12px;
   }
 
-  &__line-link {
+  &-LineLink {
     width: 2px;
     position: absolute;
     box-sizing: border-box;
@@ -20,22 +20,22 @@
     top: 42px;
     left: 19px;
   }
-  &__info {
+  &-Info {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  &__header {
-    &_margin-b {
-      &_2 {
+  &-Header {
+    &-marginB {
+      &-2 {
         margin-bottom: 2px;
       }
     }
   }
 
-  &__article {
-    &_margin-b {
-      &_4 {
+  &-Article {
+    &-marginB {
+      &-4 {
         margin-bottom: 4px;
       }
     }

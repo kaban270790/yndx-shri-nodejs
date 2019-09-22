@@ -1,32 +1,32 @@
-.icon-plus {
+.IconPlus {
   display: flex;
   position: relative;
 
-  &__icon {
+  &-Icon {
     flex-shrink: 0;
 
-    &_margin-l {
-      &_8 {
+    &-marginL {
+      &-8 {
         margin-left: 8px;
       }
     }
 
-    &_margin-r {
-      &_8 {
+    &-marginR {
+      &-8 {
         margin-right: 8px;
       }
 
-      &_6 {
+      &-6 {
         margin-right: 6px;
       }
 
-      &_12 {
+      &-12 {
         margin-right: 12px;
       }
     }
   }
 
-  &__text {
+  &-Text {
     flex-grow: 1;
     display: flex;
     align-items: center;

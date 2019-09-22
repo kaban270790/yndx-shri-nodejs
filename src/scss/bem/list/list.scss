@@ -1,50 +1,53 @@
 @import "../../params";
 
-.list {
+.List {
   display: flex;
   flex-direction: column;
 
 
-  &_display-pc_none {
-    @media screen and (min-width: $endPointTablet) {
-      display: none;
+  &-displayPc {
+    &-none {
+      @media screen and (min-width: $endPointTablet) {
+        display: none;
+      }
     }
   }
 
-  &_indent-h {
-    &_22 {
+  &-indentH {
+    &-22 {
       padding-right: 22px;
       padding-left: 22px;
     }
-    &_12 {
+
+    &-12 {
       padding-right: 12px;
       padding-left: 12px;
     }
   }
 
-  &_indent-v {
-    &_6 {
+  &-indentV {
+    &-6 {
       padding-top: 6px;
       padding-bottom: 6px;
     }
   }
 
-  &__item {
+  &-Item {
 
-    &_indent-v {
-      &_5 {
+    &-indentV {
+      &-5 {
         padding-top: 5px;
         padding-bottom: 5px;
       }
 
-      &_8 {
+      &-8 {
         padding-top: 8px;
         padding-bottom: 8px;
       }
     }
 
-    &_border-b {
-      &_gray {
+    &-borderB {
+      &-gray {
         border-bottom: 1px solid #e5e5e5;
 
         &:last-child {

@@ -1,16 +1,16 @@
-.bread-crumb {
+.BreadCrumb {
   display: flex;
   padding-bottom: 10px;
   margin-bottom: 12px;
-  &_border-b {
+  &-borderB {
     border-bottom: 1px solid #e5e5e5;
   }
 
-  &__item {
+  &-Item {
 
   }
 
-  &__slash {
+  &-Slash {
     margin-right: 18px;
     margin-left: 18px;
   }

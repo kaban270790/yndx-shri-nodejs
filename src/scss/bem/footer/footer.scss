@@ -1,29 +1,29 @@
 @import "../../params";
 
-.footer {
+.Footer {
   display: flex;
   padding: 18px 20px 14px;
   justify-content: flex-end;
   border-top: 1px solid #f0f2f3;
 
-  &__trade-secret {
+  &-TradeSecret {
     flex-grow: 1;
     @media screen and (max-width: $endPointTablet) {
       display: none;
     }
   }
 
-  &__ui-version {
+  &-UiVersion {
     flex-shrink: 0;
     margin-right: 32px;
   }
 
-  &__copyright {
+  &-Copyright {
     flex-shrink: 0;
     margin-right: 3px;
   }
 
-  &__yandex-link {
+  &-YandexLink {
     flex-shrink: 0;
   }
 }

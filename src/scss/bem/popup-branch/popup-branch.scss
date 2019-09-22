@@ -1,20 +1,20 @@
-.popup-branch {
+.PopupBranch {
   width: 320px;
-  &__current {
+  &-Current {
     background-color: #4f4f4f;
     padding: 10px 12px 6px;
   }
 
-  &__separator {
+  &-Separator {
     background-color: #e5e5e5;
     margin: 4px 12px;
     height: 1px;
   }
 
-  &__list {
+  &-List {
     overflow-y: auto;
     max-height: 200px;
-    &_hovering {
+    &-hovering {
       &:hover {
         background-color: #f4f5f6;
         > .text:first-child {

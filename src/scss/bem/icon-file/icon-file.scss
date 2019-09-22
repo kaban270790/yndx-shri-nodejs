@@ -1,16 +1,16 @@
-.icon-file {
+.IconFile {
   background-position: center;
   background-repeat: no-repeat;
   width: 12px;
 
-  &_ext {
-    &_folder {
+  &-ext {
+    &-folder {
       background-image: url(folder.svg);
     }
-    &_text {
+    &-text {
       background-image: url(text.svg);
     }
-    &_code {
+    &-code {
       background-image: url(code.svg);
     }
   }

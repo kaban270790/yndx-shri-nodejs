@@ -1,134 +1,134 @@
-.text {
+.Text {
   font-family: sans-serif;
 
-  &__first-symbol {
+  &-FirstSymbol {
     color: #FF3029;
   }
 
-  &_size {
-    &_14 {
+  &-size {
+    &-14 {
       font-size: 14px;
     }
 
-    &_16 {
+    &-16 {
       font-size: 16px;
     }
 
-    &_12 {
+    &-12 {
       font-size: 12px;
     }
 
-    &_13 {
+    &-13 {
       font-size: 13px;
     }
 
-    &_24 {
+    &-24 {
       font-size: 24px;
     }
   }
 
-  &_l-height {
-    &_13 {
+  &-lHeight {
+    &-13 {
       line-height: 13px;
     }
 
-    &_15 {
+    &-15 {
       line-height: 15px;
     }
 
-    &_18 {
+    &-18 {
       line-height: 18px;
     }
 
-    &_20 {
+    &-20 {
       line-height: 20px;
     }
 
-    &_28 {
+    &-28 {
       line-height: 28px;
     }
   }
 
-  &_width {
-    &_bold {
+  &-width {
+    &-bold {
       font-weight: bold;
     }
 
-    &_normal {
+    &-normal {
       font-weight: normal;
     }
 
-    &_lighter {
+    &-lighter {
       font-weight: lighter;
     }
   }
 
-  &_margin-r {
-    &_3 {
+  &-marginR {
+    &-3 {
       margin-right: 3px;
     }
 
-    &_8 {
+    &-8 {
       margin-right: 8px;
     }
 
-    &_16 {
+    &-16 {
       margin-right: 16px;
     }
 
-    &_24 {
+    &-24 {
       margin-right: 24px;
     }
   }
 
-  &_color {
-    &_black {
+  &-color {
+    &-black {
       color: #000
     }
 
-    &_gray {
+    &-gray {
       color: #7f8285;
     }
 
-    &_light-gray {
+    &-lightGray {
       color: #b8bec3;
     }
 
-    &_dark-gray {
+    &-darkGray {
       color: #999;
     }
 
-    &_link {
+    &-link {
       color: #1174e9;
     }
 
-    &_smoky-white {
+    &-smokyWhite {
       color: #f2f2f2;
     }
 
-    &_blue-gray {
+    &-blueGray {
       color: #434445;
     }
 
-    &_cnt-add {
+    &-cntAdd {
       color: #19bc4d;
     }
 
-    &_cnt-remove {
+    &-cntRemove {
       color: #ff3029;
     }
   }
 
-  &_underline_non {
+  &-underline_non {
     text-decoration: none;
   }
 
-  &_transform_uppercase {
+  &-transform_uppercase {
     text-transform: uppercase;
   }
 
-  &_white-space {
-    &_pre-wrap {
+  &-whiteSpace {
+    &-preWrap {
       white-space: pre-wrap;
     }
   }

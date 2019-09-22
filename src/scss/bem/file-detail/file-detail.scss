@@ -1,19 +1,19 @@
-.file-detail {
+.FileDetail {
   margin-top: 16px;
 
-  &_mode {
-    &_preview {
+  &-mode {
+    &-preview {
       --borderColor: #e5e5e5;
       --backgroundColor: #f5f5f5;
     }
 
-    &_diff {
+    &-diff {
       --borderColor: #f0f2f3;
       --backgroundColor: #fafbfc;
     }
   }
 
-  &__header {
+  &-Header {
     border: 1px solid var(--borderColor);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -24,30 +24,30 @@
     display: flex;
     overflow: hidden;
 
-    &_wrap {
+    &-wrap {
       flex-wrap: wrap;
     }
   }
 
-  &__article {
-    &_border-b {
+  &-Article {
+    &-borderB {
       border-bottom: 1px solid var(--borderColor);
     }
 
-    &_border-r {
+    &-borderR {
       border-right: 1px solid var(--borderColor);
     }
 
-    &_border-l {
+    &-borderL {
       border-left: 1px solid var(--borderColor);
     }
   }
 
-  &__file-name {
+  &-FileName {
     margin-right: auto;
   }
 
-  &__button_download {
+  &-Button_download {
     width: 38px;
     height: 28px;
     background-repeat: no-repeat;
@@ -60,7 +60,7 @@
     box-sizing: border-box;
   }
 
-  &__button-open {
+  &-ButtonOpen {
     height: 20px;
     width: 13px;
     background-repeat: no-repeat;
@@ -69,6 +69,6 @@
 
   }
 
-  &__content {
+  &-Content {
   }
 }
