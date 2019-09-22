@@ -6,7 +6,7 @@
 
 
   &_display-pc_none {
-    @media screen and (min-width: $endPointMobile) {
+    @media screen and (min-width: $endPointTablet) {
       display: none;
     }
   }

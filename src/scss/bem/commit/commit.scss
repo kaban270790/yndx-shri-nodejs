@@ -19,21 +19,26 @@
     bottom: -14px;
     top: 42px;
     left: 19px;
+  }
+  &__info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    &__header {
-      &_margin-b {
-        &_2 {
-          margin-bottom: 2px;
-        }
-      }
-    }
-
-    &__article {
-      &_margin-b {
-        &_4 {
-          margin-bottom: 4px;
-        }
+  &__header {
+    &_margin-b {
+      &_2 {
+        margin-bottom: 2px;
       }
     }
   }
+
+  &__article {
+    &_margin-b {
+      &_4 {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
 }

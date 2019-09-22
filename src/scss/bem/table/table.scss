@@ -7,7 +7,7 @@
   grid-template-columns: repeat(12, 2fr);
 
   &_display-tablet_none {
-    @media screen and (max-width: $endPointMobile) {
+    @media screen and (max-width: $endPointTablet) {
       display: none;
     }
   }
