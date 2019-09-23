@@ -613,9 +613,9 @@ __webpack_require__(/*! ../scss/main.scss */ "./src/scss/main.scss");
   !*** ./src/scss/main.scss ***!
   \****************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__.p + "main.css";
+throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: File to import not found or unreadable: BreadCrumb/bread-crumb.\n        on line 8 of src/scss/bem/blocks.scss\n        from line 1 of /Applications/PhpStorm.app/Contents/projects/yndx-shri-nodejs/src/scss/main.scss\n>> @import \"BreadCrumb/bread-crumb\";\n\n   ^\n");
 
 /***/ })
 
