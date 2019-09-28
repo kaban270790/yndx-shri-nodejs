@@ -29,6 +29,15 @@ module.exports = {
                 use: [
                     'file-loader'
                 ]
+            },
+            {
+                test: /\.js$/i,
+                "loader": "babel-loader",
+                "options": {
+                    "plugins":[
+                        "@babel/plugin-proposal-class-properties"
+                    ],
+                },
             }
         ],
     },
