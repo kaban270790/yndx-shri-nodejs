@@ -1,7 +1,6 @@
 const {TYPES} = require('./Action.js');
-
-const defaultState = {
-};
+const files = require('./reducers/files.js');
+const defaultState = {};
 
 /**
  * @param {*} state
@@ -11,9 +10,7 @@ module.exports = (state, action) => {
     if (state === undefined) {
         state = defaultState;
     }
-    switch (action.type) {
-        case TYPES.INIT:
-        default:
-            return state;
-    }
+    return Object.assign({}, state, {
+        files: files(state.files, action)
+    });
 };

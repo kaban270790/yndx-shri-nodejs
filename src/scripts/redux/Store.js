@@ -1,4 +1,4 @@
-let {TYPES} = require('./Action.js');
+let {TYPES, actions} = require('./Action.js');
 
 module.exports = class Store {
     /**
@@ -19,7 +19,7 @@ module.exports = class Store {
      */
     constructor(reducer) {
         this._reducer = reducer;
-        this.dispatch(TYPES.INIT);
+        this.dispatch(actions.init());
     }
 
     /**

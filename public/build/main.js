@@ -86,6 +86,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./mockFiles.json":
+/*!************************!*\
+  !*** ./mockFiles.json ***!
+  \************************/
+/*! exports provided: files, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"files\":[{\"name\":\"README.md\",\"ext\":\"text\",\"hash\":\"hfdkjhgjdkfhgjknfjkhy743uyhij\",\"dateTs\":1569696018,\"message\":\"jfnkdfnjkgdfnkgdf\",\"committer\":\"kaban270790\"}]}");
+
+/***/ }),
+
 /***/ "./src/scripts/main.js":
 /*!*****************************!*\
   !*** ./src/scripts/main.js ***!
@@ -99,7 +110,18 @@ const Store = __webpack_require__(/*! ./redux/Store.js */ "./src/scripts/redux/S
 
 const reducer = __webpack_require__(/*! ./redux/reducer.js */ "./src/scripts/redux/reducer.js");
 
-let store = new Store(reducer);
+let store = new Store(reducer); //todo: временный блок, т.к. нет пока что связи с серверной частью
+
+const mockFiles = __webpack_require__(/*! ../../mockFiles.json */ "./mockFiles.json");
+
+const {
+  actions
+} = __webpack_require__(/*! ./redux/actions/files.js */ "./src/scripts/redux/actions/files.js");
+
+store.subscribe(store => {
+  console.log('11', store);
+});
+store.dispatch(actions.setFilesAction(mockFiles.files));
 
 /***/ }),
 
@@ -113,8 +135,14 @@ let store = new Store(reducer);
 const TYPES = {
   INIT: '@@init'
 };
+const actions = {
+  init: () => ({
+    type: TYPES.INIT
+  })
+};
 module.exports = {
-  TYPES
+  TYPES,
+  actions
 };
 
 /***/ }),
@@ -131,7 +159,8 @@ var _temp;
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 let {
-  TYPES
+  TYPES,
+  actions
 } = __webpack_require__(/*! ./Action.js */ "./src/scripts/redux/Action.js");
 
 module.exports = (_temp = class Store {
@@ -158,7 +187,7 @@ module.exports = (_temp = class Store {
     _defineProperty(this, "_state", undefined);
 
     this._reducer = reducer;
-    this.dispatch(TYPES.INIT);
+    this.dispatch(actions.init());
   }
   /**
    * @returns {*}
@@ -200,6 +229,31 @@ module.exports = (_temp = class Store {
 
 /***/ }),
 
+/***/ "./src/scripts/redux/actions/files.js":
+/*!********************************************!*\
+  !*** ./src/scripts/redux/actions/files.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const TYPES = {
+  SET_FILES: 'SET_FILES'
+};
+const actions = {
+  setFilesAction: files => {
+    return {
+      type: TYPES.SET_FILES,
+      files: files
+    };
+  }
+};
+module.exports = {
+  TYPES,
+  actions
+};
+
+/***/ }),
+
 /***/ "./src/scripts/redux/reducer.js":
 /*!**************************************!*\
   !*** ./src/scripts/redux/reducer.js ***!
@@ -210,6 +264,8 @@ module.exports = (_temp = class Store {
 const {
   TYPES
 } = __webpack_require__(/*! ./Action.js */ "./src/scripts/redux/Action.js");
+
+const files = __webpack_require__(/*! ./reducers/files.js */ "./src/scripts/redux/reducers/files.js");
 
 const defaultState = {};
 /**
@@ -222,12 +278,48 @@ module.exports = (state, action) => {
     state = defaultState;
   }
 
+  return Object.assign({}, state, {
+    files: files(state.files, action)
+  });
+};
+
+/***/ }),
+
+/***/ "./src/scripts/redux/reducers/files.js":
+/*!*********************************************!*\
+  !*** ./src/scripts/redux/reducers/files.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const {
+  TYPES
+} = __webpack_require__(/*! ../actions/files.js */ "./src/scripts/redux/actions/files.js");
+
+const files = (state = [], action) => {
   switch (action.type) {
-    case TYPES.INIT:
+    case TYPES.SET_FILES:
+      return setFiles(state, action);
+
     default:
       return state;
   }
 };
+/**
+ * @param {*} state
+ * @param {{files:[]}} action
+ */
+
+
+const setFiles = (state, action) => {
+  if (action.files.length > 0) {
+    return Object.assign({}, state, action.files);
+  } else {
+    return state;
+  }
+};
+
+module.exports = files;
 
 /***/ }),
 
