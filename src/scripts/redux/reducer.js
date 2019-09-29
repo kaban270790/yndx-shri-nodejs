@@ -1,5 +1,6 @@
 const {TYPES} = require('./Action.js');
 const files = require('./reducers/files.js');
+const fileFilter = require('./reducers/fileFilter.js');
 const defaultState = {};
 
 /**
@@ -11,6 +12,7 @@ module.exports = (state, action) => {
         state = defaultState;
     }
     return Object.assign({}, state, {
-        files: files(state.files, action)
+        files: files(state.files, action),
+        fileFilter: fileFilter(state.fileFilter, action)
     });
 };

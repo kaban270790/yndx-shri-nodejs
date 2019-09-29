@@ -611,6 +611,14 @@
   margin-right: 20px;
   margin-left: 20px; }
 
+.FileFilter {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 18px; }
+
+.Input:focus {
+  outline: none; }
+
 body {
   padding: 0;
   margin: 0; }

@@ -11,6 +11,10 @@ module.exports = class View {
      * @param {Function}
      */
     _unsubscribe;
+    /**
+     * @param {Node}
+     */
+    _renderEl;
 
     /**
      * @param {Node} el

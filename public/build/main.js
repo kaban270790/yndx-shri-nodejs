@@ -93,7 +93,7 @@
 /*! exports provided: files, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"files\":[{\"name\":\"README.md\",\"ext\":\"text\",\"hash\":\"hfdkjhgjdkfhgjknfjkhy743uyhij\",\"dateTs\":1569696018,\"message\":\"jfnkdfnjkgdfnkgdf\",\"committer\":\"kaban270790\"}]}");
+module.exports = JSON.parse("{\"files\":[{\"name\":\"README.md\",\"ext\":\"text\",\"hash\":\"hfdkjhgjdkfhgjknfjkhy743uyhij\",\"dateTs\":1569696018,\"message\":\"jfnkdfnjkgdfnkgdf\",\"committer\":\"kaban270790\",\"isShow\":true}]}");
 
 /***/ }),
 
@@ -110,7 +110,12 @@ const Store = __webpack_require__(/*! ./redux/Store.js */ "./src/scripts/redux/S
 
 const reducer = __webpack_require__(/*! ./redux/reducer.js */ "./src/scripts/redux/reducer.js");
 
-let store = new Store(reducer); //todo: временный блок, т.к. нет пока что связи с серверной частью
+let store = new Store(reducer); //todo это временная конструкция, т.к. пока что есть возможность вставить только этот элемент в дерево DOM
+
+const FileFilter = __webpack_require__(/*! ./view/FileFilter.js */ "./src/scripts/view/FileFilter.js");
+
+const FileFilterContainer = document.getElementsByClassName('FileFilter')[0];
+new FileFilter(FileFilterContainer, store); //todo: временный блок, т.к. нет пока что связи с серверной частью
 
 const mockFiles = __webpack_require__(/*! ../../mockFiles.json */ "./mockFiles.json");
 
@@ -119,7 +124,7 @@ const {
 } = __webpack_require__(/*! ./redux/actions/files.js */ "./src/scripts/redux/actions/files.js");
 
 store.subscribe(store => {
-  console.log('11', store);
+  console.log(store);
 });
 store.dispatch(actions.setFilesAction(mockFiles.files));
 
@@ -229,6 +234,105 @@ module.exports = (_temp = class Store {
 
 /***/ }),
 
+/***/ "./src/scripts/redux/View.js":
+/*!***********************************!*\
+  !*** ./src/scripts/redux/View.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var _temp;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+module.exports = (_temp = class View {
+  /**
+   * @param {Node}
+   */
+
+  /**
+   * @param {Store}
+   */
+
+  /**
+   * @param {Function}
+   */
+
+  /**
+   * @param {Node}
+   */
+
+  /**
+   * @param {Node} el
+   * @param {Store} store
+   */
+  constructor(el, store) {
+    _defineProperty(this, "_el", void 0);
+
+    _defineProperty(this, "_store", void 0);
+
+    _defineProperty(this, "_unsubscribe", void 0);
+
+    _defineProperty(this, "_renderEl", void 0);
+
+    this._el = el;
+    this._store = store;
+    this._unsubscribe = store.subscribe(this._preRender.bind(this));
+
+    this._preRender(store.getState());
+  }
+  /**
+   * @param {*} state
+   */
+
+
+  _preRender(state) {
+    this._el.innerHTML = this.render(state);
+  }
+  /**
+   * @param {*} state
+   */
+
+
+  render(state) {
+    throw new Error("Required method implementation");
+  }
+
+  destroy() {
+    this._el.innerHTML = '';
+
+    this._unsubscribe();
+  }
+
+}, _temp);
+
+/***/ }),
+
+/***/ "./src/scripts/redux/actions/fileFilter.js":
+/*!*************************************************!*\
+  !*** ./src/scripts/redux/actions/fileFilter.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const TYPES = {
+  UPDATE_FILE_FILTER: 'UPDATE_FILE_FILTER'
+};
+const actions = {
+  updateFileFilter: filter => {
+    return {
+      type: TYPES.UPDATE_FILE_FILTER,
+      filter: filter
+    };
+  }
+};
+module.exports = {
+  TYPES,
+  actions
+};
+
+/***/ }),
+
 /***/ "./src/scripts/redux/actions/files.js":
 /*!********************************************!*\
   !*** ./src/scripts/redux/actions/files.js ***!
@@ -267,6 +371,8 @@ const {
 
 const files = __webpack_require__(/*! ./reducers/files.js */ "./src/scripts/redux/reducers/files.js");
 
+const fileFilter = __webpack_require__(/*! ./reducers/fileFilter.js */ "./src/scripts/redux/reducers/fileFilter.js");
+
 const defaultState = {};
 /**
  * @param {*} state
@@ -279,9 +385,48 @@ module.exports = (state, action) => {
   }
 
   return Object.assign({}, state, {
-    files: files(state.files, action)
+    files: files(state.files, action),
+    fileFilter: fileFilter(state.fileFilter, action)
   });
 };
+
+/***/ }),
+
+/***/ "./src/scripts/redux/reducers/fileFilter.js":
+/*!**************************************************!*\
+  !*** ./src/scripts/redux/reducers/fileFilter.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const {
+  TYPES
+} = __webpack_require__(/*! ../actions/fileFilter.js */ "./src/scripts/redux/actions/fileFilter.js");
+
+const files = (state = {
+  value: ''
+}, action) => {
+  switch (action.type) {
+    case TYPES.UPDATE_FILE_FILTER:
+      return updateFilter(state, action);
+
+    default:
+      return state;
+  }
+};
+/**
+ * @param {*} state
+ * @param {{filter:[]}} action
+ */
+
+
+const updateFilter = (state, action) => {
+  return Object.assign({}, state, {
+    value: action.filter
+  });
+};
+
+module.exports = files;
 
 /***/ }),
 
@@ -320,6 +465,62 @@ const setFiles = (state, action) => {
 };
 
 module.exports = files;
+
+/***/ }),
+
+/***/ "./src/scripts/view/FileFilter.js":
+/*!****************************************!*\
+  !*** ./src/scripts/view/FileFilter.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _temp;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
+
+const INPUT_PLACEHOLDER = 'Фильтр файлов';
+
+const {
+  actions
+} = __webpack_require__(/*! ../redux/actions/fileFilter.js */ "./src/scripts/redux/actions/fileFilter.js");
+
+module.exports = (_temp = class FileFilterView extends View {
+  constructor(el, store) {
+    super(el, store);
+
+    _defineProperty(this, "_keyUpTimeout", void 0);
+
+    this._onKeyUp = this._keyUp.bind(this);
+
+    this._el.addEventListener('keyup', this._onKeyUp);
+  }
+  /**
+   * @param {{fileFilter: string}} state
+   * @returns {string}
+   */
+
+
+  render(state) {
+    return `<input class="Input" placeholder="${INPUT_PLACEHOLDER}" value="${state.fileFilter.value || ''}"/>`;
+  }
+
+  _keyUp(e) {
+    clearTimeout(this._keyUpTimeout);
+    this._keyUpTimeout = setTimeout(() => {
+      this._store.dispatch(actions.updateFileFilter(e.target.value || ''));
+    }, 250);
+  }
+
+  destroy() {
+    super.destroy();
+
+    this._el.removeEventListener('keyup', this._onKeyUp);
+  }
+
+}, _temp);
 
 /***/ }),
 
