@@ -86,512 +86,38 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/path-browserify/index.js":
-/*!***********************************************!*\
-  !*** ./node_modules/path-browserify/index.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./mockFiles.json":
+/*!************************!*\
+  !*** ./mockFiles.json ***!
+  \************************/
+/*! exports provided: files, default */
+/***/ (function(module) {
 
-/* WEBPACK VAR INJECTION */(function(process) {// .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
-// backported and transplited with Babel, with backwards-compat fixes
-
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-// resolves . and .. elements in a path array with directory names there
-// must be no slashes, empty elements, or device names (c:\) in the array
-// (so also no leading and trailing slashes - it does not distinguish
-// relative and absolute paths)
-function normalizeArray(parts, allowAboveRoot) {
-  // if the path tries to go above the root, `up` ends up > 0
-  var up = 0;
-  for (var i = parts.length - 1; i >= 0; i--) {
-    var last = parts[i];
-    if (last === '.') {
-      parts.splice(i, 1);
-    } else if (last === '..') {
-      parts.splice(i, 1);
-      up++;
-    } else if (up) {
-      parts.splice(i, 1);
-      up--;
-    }
-  }
-
-  // if the path is allowed to go above the root, restore leading ..s
-  if (allowAboveRoot) {
-    for (; up--; up) {
-      parts.unshift('..');
-    }
-  }
-
-  return parts;
-}
-
-// path.resolve([from ...], to)
-// posix version
-exports.resolve = function() {
-  var resolvedPath = '',
-      resolvedAbsolute = false;
-
-  for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-    var path = (i >= 0) ? arguments[i] : process.cwd();
-
-    // Skip empty and invalid entries
-    if (typeof path !== 'string') {
-      throw new TypeError('Arguments to path.resolve must be strings');
-    } else if (!path) {
-      continue;
-    }
-
-    resolvedPath = path + '/' + resolvedPath;
-    resolvedAbsolute = path.charAt(0) === '/';
-  }
-
-  // At this point the path should be resolved to a full absolute path, but
-  // handle relative paths to be safe (might happen when process.cwd() fails)
-
-  // Normalize the path
-  resolvedPath = normalizeArray(filter(resolvedPath.split('/'), function(p) {
-    return !!p;
-  }), !resolvedAbsolute).join('/');
-
-  return ((resolvedAbsolute ? '/' : '') + resolvedPath) || '.';
-};
-
-// path.normalize(path)
-// posix version
-exports.normalize = function(path) {
-  var isAbsolute = exports.isAbsolute(path),
-      trailingSlash = substr(path, -1) === '/';
-
-  // Normalize the path
-  path = normalizeArray(filter(path.split('/'), function(p) {
-    return !!p;
-  }), !isAbsolute).join('/');
-
-  if (!path && !isAbsolute) {
-    path = '.';
-  }
-  if (path && trailingSlash) {
-    path += '/';
-  }
-
-  return (isAbsolute ? '/' : '') + path;
-};
-
-// posix version
-exports.isAbsolute = function(path) {
-  return path.charAt(0) === '/';
-};
-
-// posix version
-exports.join = function() {
-  var paths = Array.prototype.slice.call(arguments, 0);
-  return exports.normalize(filter(paths, function(p, index) {
-    if (typeof p !== 'string') {
-      throw new TypeError('Arguments to path.join must be strings');
-    }
-    return p;
-  }).join('/'));
-};
-
-
-// path.relative(from, to)
-// posix version
-exports.relative = function(from, to) {
-  from = exports.resolve(from).substr(1);
-  to = exports.resolve(to).substr(1);
-
-  function trim(arr) {
-    var start = 0;
-    for (; start < arr.length; start++) {
-      if (arr[start] !== '') break;
-    }
-
-    var end = arr.length - 1;
-    for (; end >= 0; end--) {
-      if (arr[end] !== '') break;
-    }
-
-    if (start > end) return [];
-    return arr.slice(start, end - start + 1);
-  }
-
-  var fromParts = trim(from.split('/'));
-  var toParts = trim(to.split('/'));
-
-  var length = Math.min(fromParts.length, toParts.length);
-  var samePartsLength = length;
-  for (var i = 0; i < length; i++) {
-    if (fromParts[i] !== toParts[i]) {
-      samePartsLength = i;
-      break;
-    }
-  }
-
-  var outputParts = [];
-  for (var i = samePartsLength; i < fromParts.length; i++) {
-    outputParts.push('..');
-  }
-
-  outputParts = outputParts.concat(toParts.slice(samePartsLength));
-
-  return outputParts.join('/');
-};
-
-exports.sep = '/';
-exports.delimiter = ':';
-
-exports.dirname = function (path) {
-  if (typeof path !== 'string') path = path + '';
-  if (path.length === 0) return '.';
-  var code = path.charCodeAt(0);
-  var hasRoot = code === 47 /*/*/;
-  var end = -1;
-  var matchedSlash = true;
-  for (var i = path.length - 1; i >= 1; --i) {
-    code = path.charCodeAt(i);
-    if (code === 47 /*/*/) {
-        if (!matchedSlash) {
-          end = i;
-          break;
-        }
-      } else {
-      // We saw the first non-path separator
-      matchedSlash = false;
-    }
-  }
-
-  if (end === -1) return hasRoot ? '/' : '.';
-  if (hasRoot && end === 1) {
-    // return '//';
-    // Backwards-compat fix:
-    return '/';
-  }
-  return path.slice(0, end);
-};
-
-function basename(path) {
-  if (typeof path !== 'string') path = path + '';
-
-  var start = 0;
-  var end = -1;
-  var matchedSlash = true;
-  var i;
-
-  for (i = path.length - 1; i >= 0; --i) {
-    if (path.charCodeAt(i) === 47 /*/*/) {
-        // If we reached a path separator that was not part of a set of path
-        // separators at the end of the string, stop now
-        if (!matchedSlash) {
-          start = i + 1;
-          break;
-        }
-      } else if (end === -1) {
-      // We saw the first non-path separator, mark this as the end of our
-      // path component
-      matchedSlash = false;
-      end = i + 1;
-    }
-  }
-
-  if (end === -1) return '';
-  return path.slice(start, end);
-}
-
-// Uses a mixed approach for backwards-compatibility, as ext behavior changed
-// in new Node.js versions, so only basename() above is backported here
-exports.basename = function (path, ext) {
-  var f = basename(path);
-  if (ext && f.substr(-1 * ext.length) === ext) {
-    f = f.substr(0, f.length - ext.length);
-  }
-  return f;
-};
-
-exports.extname = function (path) {
-  if (typeof path !== 'string') path = path + '';
-  var startDot = -1;
-  var startPart = 0;
-  var end = -1;
-  var matchedSlash = true;
-  // Track the state of characters (if any) we see before our first dot and
-  // after any path separator we find
-  var preDotState = 0;
-  for (var i = path.length - 1; i >= 0; --i) {
-    var code = path.charCodeAt(i);
-    if (code === 47 /*/*/) {
-        // If we reached a path separator that was not part of a set of path
-        // separators at the end of the string, stop now
-        if (!matchedSlash) {
-          startPart = i + 1;
-          break;
-        }
-        continue;
-      }
-    if (end === -1) {
-      // We saw the first non-path separator, mark this as the end of our
-      // extension
-      matchedSlash = false;
-      end = i + 1;
-    }
-    if (code === 46 /*.*/) {
-        // If this is our first dot, mark it as the start of our extension
-        if (startDot === -1)
-          startDot = i;
-        else if (preDotState !== 1)
-          preDotState = 1;
-    } else if (startDot !== -1) {
-      // We saw a non-dot and non-path separator before our dot, so we should
-      // have a good chance at having a non-empty extension
-      preDotState = -1;
-    }
-  }
-
-  if (startDot === -1 || end === -1 ||
-      // We saw a non-dot character immediately before the dot
-      preDotState === 0 ||
-      // The (right-most) trimmed path component is exactly '..'
-      preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
-    return '';
-  }
-  return path.slice(startDot, end);
-};
-
-function filter (xs, f) {
-    if (xs.filter) return xs.filter(f);
-    var res = [];
-    for (var i = 0; i < xs.length; i++) {
-        if (f(xs[i], i, xs)) res.push(xs[i]);
-    }
-    return res;
-}
-
-// String.prototype.substr - negative index don't work in IE8
-var substr = 'ab'.substr(-1) === 'b'
-    ? function (str, start, len) { return str.substr(start, len) }
-    : function (str, start, len) {
-        if (start < 0) start = str.length + start;
-        return str.substr(start, len);
-    }
-;
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
+module.exports = JSON.parse("{\"files\":[{\"name\":\"src\",\"ext\":\"folder\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"public\",\"ext\":\"folder\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\".env.example\",\"ext\":\"text\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\".gitignore\",\"ext\":\"text\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"README.md\",\"ext\":\"text\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"README_STYLE.md\",\"ext\":\"text\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"mockFiles.json\",\"ext\":\"code\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"package-lock.json\",\"ext\":\"code\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"package.json\",\"ext\":\"code\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"server.js\",\"ext\":\"code\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"},{\"name\":\"webpack.config.js\",\"ext\":\"code\",\"hash\":\"6ac753fcfde69fdf8e332a06556dd72d85902748\",\"date\":\"Dec 29, 2017\",\"message\":\"Текст коммита\",\"committer\":\"kaban270790\"}]}");
 
 /***/ }),
 
-/***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
-  !*** ./node_modules/process/browser.js ***!
-  \*****************************************/
+/***/ "./src/scripts/helpers.js":
+/*!********************************!*\
+  !*** ./src/scripts/helpers.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
+/**
+ * @param {{name: string}} file
+ * @param {string} filter
+ *
+ * @return boolean
+ */
+const isShowFile = function (file, filter) {
+  const regExp = new RegExp(filter, 'gi');
+  return regExp.test(file.name);
 };
 
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
+module.exports = {
+  isShowFile
 };
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
 
 /***/ }),
 
@@ -602,9 +128,573 @@ process.umask = function() { return 0; };
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-const path = __webpack_require__(/*! path */ "./node_modules/path-browserify/index.js");
 __webpack_require__(/*! ../scss/main.scss */ "./src/scss/main.scss");
 
+const Store = __webpack_require__(/*! ./redux/Store.js */ "./src/scripts/redux/Store.js");
+
+const reducer = __webpack_require__(/*! ./redux/reducer.js */ "./src/scripts/redux/reducer.js");
+
+let store = new Store(reducer); //todo это временная конструкция, т.к. пока что есть возможность вставить только этот элемент в дерево DOM
+
+const FileFilter = __webpack_require__(/*! ./view/FileFilter.js */ "./src/scripts/view/FileFilter.js");
+
+const FileFilterContainer = document.getElementsByClassName('FileFilter')[0];
+new FileFilter(FileFilterContainer, store);
+
+const FileListTable = __webpack_require__(/*! ./view/FileListTable.js */ "./src/scripts/view/FileListTable.js");
+
+const FileListTableContainer = document.getElementsByClassName('Table-Body')[0];
+new FileListTable(FileListTableContainer, store);
+
+const FileListMobile = __webpack_require__(/*! ./view/FileListMobile.js */ "./src/scripts/view/FileListMobile.js");
+
+const FileListMobileContainer = document.getElementsByClassName('TableMobile')[0];
+new FileListMobile(FileListMobileContainer, store); //todo: временный блок, т.к. нет пока что связи с серверной частью
+
+const mockFiles = __webpack_require__(/*! ../../mockFiles.json */ "./mockFiles.json");
+
+const {
+  actions
+} = __webpack_require__(/*! ./redux/actions/files.js */ "./src/scripts/redux/actions/files.js");
+
+store.subscribe(store => {
+  console.log(store);
+});
+store.dispatch(actions.setFilesAction(mockFiles.files));
+
+/***/ }),
+
+/***/ "./src/scripts/redux/Action.js":
+/*!*************************************!*\
+  !*** ./src/scripts/redux/Action.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const TYPES = {
+  INIT: '@@init'
+};
+const actions = {
+  init: () => ({
+    type: TYPES.INIT
+  })
+};
+module.exports = {
+  TYPES,
+  actions
+};
+
+/***/ }),
+
+/***/ "./src/scripts/redux/Store.js":
+/*!************************************!*\
+  !*** ./src/scripts/redux/Store.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _temp;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+let {
+  TYPES,
+  actions
+} = __webpack_require__(/*! ./Action.js */ "./src/scripts/redux/Action.js");
+
+module.exports = (_temp = class Store {
+  /**
+   * {Function}
+   */
+
+  /**
+   * @type {Function[]}
+   */
+
+  /**
+   * @type {*}
+   */
+
+  /**
+   * @param {Function} reducer
+   */
+  constructor(reducer) {
+    _defineProperty(this, "_reducer", void 0);
+
+    _defineProperty(this, "_listeners", []);
+
+    _defineProperty(this, "_state", undefined);
+
+    this._reducer = reducer;
+    this.dispatch(actions.init());
+  }
+  /**
+   * @returns {*}
+   */
+
+
+  getState() {
+    return this._state;
+  }
+  /**
+   * @param {Function} subscriber
+   * @returns {Function}
+   */
+
+
+  subscribe(subscriber) {
+    this._listeners.push(subscriber);
+
+    return () => {
+      this._listeners.splice(this._listeners.indexOf(subscriber), 1);
+    };
+  }
+  /**
+   * @param {{type:string}} action
+   */
+
+
+  dispatch(action) {
+    this._state = this._reducer(this._state, action);
+
+    this._notifyListeners();
+  }
+
+  _notifyListeners() {
+    this._listeners.forEach(listener => listener(this._state));
+  }
+
+}, _temp);
+
+/***/ }),
+
+/***/ "./src/scripts/redux/View.js":
+/*!***********************************!*\
+  !*** ./src/scripts/redux/View.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var _temp;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+module.exports = (_temp = class View {
+  /**
+   * @param {Node}
+   */
+
+  /**
+   * @param {Store}
+   */
+
+  /**
+   * @param {Function}
+   */
+
+  /**
+   * @param {Node} el
+   * @param {Store} store
+   */
+  constructor(el, store) {
+    _defineProperty(this, "_el", void 0);
+
+    _defineProperty(this, "_store", void 0);
+
+    _defineProperty(this, "_unsubscribe", void 0);
+
+    this._el = el;
+    this._store = store;
+    this._unsubscribe = store.subscribe(this._preRender.bind(this));
+
+    this._preRender(store.getState());
+  }
+  /**
+   * @param {*} state
+   */
+
+
+  _preRender(state) {
+    const renderHTML = this.render(state);
+    console.group(this.toString());
+    console.log(renderHTML);
+    console.log(this._el.innerHTML);
+    console.groupEnd();
+
+    if (renderHTML !== this._el.innerHTML) {
+      this._el.innerHTML = renderHTML;
+    }
+  }
+  /**
+   * @param {*} state
+   */
+
+
+  render(state) {
+    throw new Error("Required method implementation");
+  }
+
+  destroy() {
+    this._el.innerHTML = '';
+
+    this._unsubscribe();
+  }
+
+}, _temp);
+
+/***/ }),
+
+/***/ "./src/scripts/redux/actions/fileFilter.js":
+/*!*************************************************!*\
+  !*** ./src/scripts/redux/actions/fileFilter.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const TYPES = {
+  UPDATE_FILE_FILTER: 'UPDATE_FILE_FILTER'
+};
+const actions = {
+  updateFileFilter: filter => {
+    return {
+      type: TYPES.UPDATE_FILE_FILTER,
+      filter: filter
+    };
+  }
+};
+module.exports = {
+  TYPES,
+  actions
+};
+
+/***/ }),
+
+/***/ "./src/scripts/redux/actions/files.js":
+/*!********************************************!*\
+  !*** ./src/scripts/redux/actions/files.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+const TYPES = {
+  SET_FILES: 'SET_FILES'
+};
+const actions = {
+  setFilesAction: files => {
+    return {
+      type: TYPES.SET_FILES,
+      files: files
+    };
+  }
+};
+module.exports = {
+  TYPES,
+  actions
+};
+
+/***/ }),
+
+/***/ "./src/scripts/redux/reducer.js":
+/*!**************************************!*\
+  !*** ./src/scripts/redux/reducer.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const {
+  TYPES
+} = __webpack_require__(/*! ./Action.js */ "./src/scripts/redux/Action.js");
+
+const files = __webpack_require__(/*! ./reducers/files.js */ "./src/scripts/redux/reducers/files.js");
+
+const fileFilter = __webpack_require__(/*! ./reducers/fileFilter.js */ "./src/scripts/redux/reducers/fileFilter.js");
+
+const defaultState = {};
+/**
+ * @param {*} state
+ * @param {{type:string, payload:*}} action
+ */
+
+module.exports = (state, action) => {
+  if (state === undefined) {
+    state = defaultState;
+  }
+
+  return Object.assign({}, state, {
+    files: files(state.files, action),
+    fileFilter: fileFilter(state.fileFilter, action)
+  });
+};
+
+/***/ }),
+
+/***/ "./src/scripts/redux/reducers/fileFilter.js":
+/*!**************************************************!*\
+  !*** ./src/scripts/redux/reducers/fileFilter.js ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const {
+  TYPES
+} = __webpack_require__(/*! ../actions/fileFilter.js */ "./src/scripts/redux/actions/fileFilter.js");
+
+const files = (state = {
+  value: ''
+}, action) => {
+  switch (action.type) {
+    case TYPES.UPDATE_FILE_FILTER:
+      return updateFilter(state, action);
+
+    default:
+      return state;
+  }
+};
+/**
+ * @param {*} state
+ * @param {{filter:[]}} action
+ */
+
+
+const updateFilter = (state, action) => {
+  return Object.assign({}, state, {
+    value: action.filter
+  });
+};
+
+module.exports = files;
+
+/***/ }),
+
+/***/ "./src/scripts/redux/reducers/files.js":
+/*!*********************************************!*\
+  !*** ./src/scripts/redux/reducers/files.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const {
+  TYPES
+} = __webpack_require__(/*! ../actions/files.js */ "./src/scripts/redux/actions/files.js");
+
+const files = (state = {}, action) => {
+  switch (action.type) {
+    case TYPES.SET_FILES:
+      return setFiles(state, action);
+
+    default:
+      return state;
+  }
+};
+/**
+ * @param {*} state
+ * @param {{files:[]}} action
+ */
+
+
+const setFiles = (state, action) => {
+  if (action.files.length > 0) {
+    return Object.assign({}, state, action.files);
+  } else {
+    return state;
+  }
+};
+
+module.exports = files;
+
+/***/ }),
+
+/***/ "./src/scripts/view/FileFilter.js":
+/*!****************************************!*\
+  !*** ./src/scripts/view/FileFilter.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _temp;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
+
+const INPUT_PLACEHOLDER = 'Фильтр файлов';
+
+const {
+  actions
+} = __webpack_require__(/*! ../redux/actions/fileFilter.js */ "./src/scripts/redux/actions/fileFilter.js");
+
+module.exports = (_temp = class FileFilterView extends View {
+  constructor(el, store) {
+    super(el, store);
+
+    _defineProperty(this, "_keyUpTimeout", void 0);
+
+    this._onKeyUp = this._keyUp.bind(this);
+
+    this._el.addEventListener('keyup', this._onKeyUp);
+  }
+  /**
+   * @param {{fileFilter: string}} state
+   * @returns {string}
+   */
+
+
+  render(state) {
+    return `<input class="Input" placeholder="${INPUT_PLACEHOLDER}" value="">`;
+  }
+
+  _keyUp(e) {
+    clearTimeout(this._keyUpTimeout);
+    this._keyUpTimeout = setTimeout(() => {
+      this._store.dispatch(actions.updateFileFilter(e.target.value || ''));
+    }, 250);
+  }
+
+  destroy() {
+    super.destroy();
+
+    this._el.removeEventListener('keyup', this._onKeyUp);
+  }
+
+}, _temp);
+
+/***/ }),
+
+/***/ "./src/scripts/view/FileListMobile.js":
+/*!********************************************!*\
+  !*** ./src/scripts/view/FileListMobile.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
+
+const {
+  isShowFile
+} = __webpack_require__(/*! ../helpers.js */ "./src/scripts/helpers.js");
+
+module.exports = class FileListView extends View {
+  /**
+   * @param {{files: {}, fileFilter:{value:string}}} state
+   * @returns {string}
+   */
+  render(state) {
+    let files = [];
+
+    for (let index in state.files) {
+      if (state.files.hasOwnProperty(index) && isShowFile(state.files[index], state.fileFilter.value)) {
+        files.push(this.renderFile(state.files[index]));
+      }
+    }
+
+    return files.join('');
+  }
+
+  /**
+   * @param {{name: string,ext:string,hash:string,date:string,message:string,committer: string}} file
+   * @returns {string}
+   */
+  renderFile(file) {
+    const shortHash = file.hash.slice(0, 6);
+    return `
+            <div class="List-Item List-Item-borderB-gray ListItem-borderB-gray">
+                <div class="IconPlus List">
+                    <div class="List-Item List-Item-indentV-5">
+                        <div class="IconPlus">
+                            <div class="IconPlus-Text List">
+                                <div class="List-Item List-Item-indentV-5">
+                                    <div class="IconPlus">
+                                        <div class="IconPlus-Icon IconPlus-Icon-marginR-8 IconFile IconFile-ext-${file.ext}"></div>
+                                        <div class="IconPlus-Text Text Text-size-14 Text-lHeight-20 Text-color-black Text-width-bold">${file.name}</div>
+                                    </div>
+                                </div>
+                                <div class="List-Item List-Item-indentV-5">
+                                            <span class="Text Text-size-14 Text-lHeight-20 Text-color-black">${file.message}</span>
+                                </div>
+                                <div class="List-Item List-Item-indentV-5">
+                                    <a class="Text Text-color-link Text-size-14 Text-lHeight-20 Text-underline-non Text-marginR-8"
+                                       href="#">${shortHash}</a>
+                                    <span class="Text Text-color-black Text-size-14 Text-lHeight-20">
+                                                by ${file.committer}, ${file.date}
+                                            </span>
+                                </div>
+                            </div>
+                            <div class="IconPlus-Icon IconPlus-Icon-marginL-8 IconNav IconNav-arrow-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+  }
+
+};
+
+/***/ }),
+
+/***/ "./src/scripts/view/FileListTable.js":
+/*!*******************************************!*\
+  !*** ./src/scripts/view/FileListTable.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
+
+const {
+  isShowFile
+} = __webpack_require__(/*! ../helpers.js */ "./src/scripts/helpers.js");
+
+module.exports = class FileListTableView extends View {
+  /**
+   * @param {{files: {}, fileFilter:{value:string}}} state
+   * @returns {string}
+   */
+  render(state) {
+    let files = [];
+
+    for (let index in state.files) {
+      if (state.files.hasOwnProperty(index) && isShowFile(state.files[index], state.fileFilter.value)) {
+        files.push(this.renderFile(state.files[index]));
+      }
+    }
+
+    return files.join('');
+  }
+
+  /**
+   * @param {{name: string,ext:string,hash:string,date:string,message:string,committer: string}} file
+   * @returns {string}
+   */
+  renderFile(file) {
+    const shortHash = file.hash.slice(0, 6);
+    return `<tr class="Table-Row">
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <div class="IconPlus">
+                        <div class="IconPlus-Icon IconPlus-Icon-marginR-8 IconFile IconFile-ext-${file.ext}">
+                        </div>
+                        <div class="IconPlus-Text Text Text-lHeight-20 Text-size-14 Text-color-black Text-width-bold">
+                            ${file.name}
+                        </div>
+                    </div>
+                </td>
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <a href="#" class="Text Text-color-link Text-underline-non Text-size-14 Text-lHeight-20">${shortHash}</a>
+                </td>
+                <td class="Table-Cell Table-Cell-width-4 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <span class="Text Text-size-14 Text-lHeight-20 Text-color-black">${file.message}</span>
+                </td>
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <span class="Text Text-color-black Text-size-14 Text-lHeight-20">
+                        <span class="Text-FirstSymbol">${file.committer.slice(0, 1)}</span>${file.committer.slice(1)}
+                    </span>
+                </td>
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18 Table-Cell-align-right">
+                    <span class="Text Text-color-black Text-size-14 Text-lHeight-20">${file.date}</span>
+                </td>
+            </tr>`;
+  }
+
+};
 
 /***/ }),
 
@@ -613,9 +703,9 @@ __webpack_require__(/*! ../scss/main.scss */ "./src/scss/main.scss");
   !*** ./src/scss/main.scss ***!
   \****************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: File to import not found or unreadable: BreadCrumb/bread-crumb.\n        on line 8 of src/scss/bem/blocks.scss\n        from line 1 of /Applications/PhpStorm.app/Contents/projects/yndx-shri-nodejs/src/scss/main.scss\n>> @import \"BreadCrumb/bread-crumb\";\n\n   ^\n");
+module.exports = __webpack_require__.p + "main.css";
 
 /***/ })
 
