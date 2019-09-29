@@ -103,7 +103,9 @@ if (!argv.path || argv.path.length === 0) {
         res.status(404)
             .json({"error": "Not found!"});
     });
-    server.listen(env.SERVER_PORT);
+    server.listen(env.SERVER_PORT, () => {
+        console.log(`Server listening on port ${env.SERVER_PORT}!`);
+    });
 }).catch(reason => {
     throw new Error(reason);
 });

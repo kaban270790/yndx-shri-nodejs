@@ -4,7 +4,8 @@
   "description": "homework by nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api-server-dev": "node server.js --path=../"
   },
   "repository": {
     "type": "git",
