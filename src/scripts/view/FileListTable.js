@@ -1,14 +1,16 @@
 const View = require('../redux/View.js');
+const {isShowFile} = require('../helpers.js');
+
 module.exports = class FileListTableView extends View {
 
     /**
-     * @param {{files: {}}} state
+     * @param {{files: {}, fileFilter:{value:string}}} state
      * @returns {string}
      */
     render(state) {
         let files = [];
         for(let index in state.files) {
-            if (state.files.hasOwnProperty(index)) {
+            if (state.files.hasOwnProperty(index) && isShowFile(state.files[index], state.fileFilter.value)) {
                 files.push(this.renderFile(state.files[index]));
             }
         }

@@ -97,6 +97,30 @@ module.exports = JSON.parse("{\"files\":[{\"name\":\"README.md\",\"ext\":\"text\
 
 /***/ }),
 
+/***/ "./src/scripts/helpers.js":
+/*!********************************!*\
+  !*** ./src/scripts/helpers.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * @param {{name: string}} file
+ * @param {string} filter
+ *
+ * @return boolean
+ */
+const isShowFile = function (file, filter) {
+  const regExp = new RegExp(filter, 'gi');
+  return regExp.test(file.name);
+};
+
+module.exports = {
+  isShowFile
+};
+
+/***/ }),
+
 /***/ "./src/scripts/main.js":
 /*!*****************************!*\
   !*** ./src/scripts/main.js ***!
@@ -543,16 +567,20 @@ module.exports = (_temp = class FileFilterView extends View {
 
 const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
 
+const {
+  isShowFile
+} = __webpack_require__(/*! ../helpers.js */ "./src/scripts/helpers.js");
+
 module.exports = class FileListView extends View {
   /**
-   * @param {{files: {}}} state
+   * @param {{files: {}, fileFilter:{value:string}}} state
    * @returns {string}
    */
   render(state) {
     let files = [];
 
     for (let index in state.files) {
-      if (state.files.hasOwnProperty(index)) {
+      if (state.files.hasOwnProperty(index) && isShowFile(state.files[index], state.fileFilter.value)) {
         files.push(this.renderFile(state.files[index]));
       }
     }
@@ -610,16 +638,20 @@ module.exports = class FileListView extends View {
 
 const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
 
+const {
+  isShowFile
+} = __webpack_require__(/*! ../helpers.js */ "./src/scripts/helpers.js");
+
 module.exports = class FileListTableView extends View {
   /**
-   * @param {{files: {}}} state
+   * @param {{files: {}, fileFilter:{value:string}}} state
    * @returns {string}
    */
   render(state) {
     let files = [];
 
     for (let index in state.files) {
-      if (state.files.hasOwnProperty(index)) {
+      if (state.files.hasOwnProperty(index) && isShowFile(state.files[index], state.fileFilter.value)) {
         files.push(this.renderFile(state.files[index]));
       }
     }
