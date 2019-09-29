@@ -93,7 +93,7 @@
 /*! exports provided: files, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"files\":[{\"name\":\"README.md\",\"ext\":\"text\",\"hash\":\"hfdkjhgjdkfhgjknfjkhy743uyhij\",\"dateTs\":1569696018,\"message\":\"jfnkdfnjkgdfnkgdf\",\"committer\":\"kaban270790\",\"isShow\":true}]}");
+module.exports = JSON.parse("{\"files\":[{\"name\":\"README.md\",\"ext\":\"text\",\"hash\":\"hfdkjhgjdkfhgjknfjkhy743uyhij\",\"date\":\"Dec 29, 2017\",\"message\":\"jfnkdfnjkgdfnkgdf\",\"committer\":\"kaban270790\"}]}");
 
 /***/ }),
 
@@ -115,7 +115,17 @@ let store = new Store(reducer); //todo это временная констру�
 const FileFilter = __webpack_require__(/*! ./view/FileFilter.js */ "./src/scripts/view/FileFilter.js");
 
 const FileFilterContainer = document.getElementsByClassName('FileFilter')[0];
-new FileFilter(FileFilterContainer, store); //todo: временный блок, т.к. нет пока что связи с серверной частью
+new FileFilter(FileFilterContainer, store);
+
+const FileListTable = __webpack_require__(/*! ./view/FileListTable.js */ "./src/scripts/view/FileListTable.js");
+
+const FileListTableContainer = document.getElementsByClassName('Table-Body')[0];
+new FileListTable(FileListTableContainer, store);
+
+const FileListMobile = __webpack_require__(/*! ./view/FileListMobile.js */ "./src/scripts/view/FileListMobile.js");
+
+const FileListMobileContainer = document.getElementsByClassName('TableMobile')[0];
+new FileListMobile(FileListMobileContainer, store); //todo: временный блок, т.к. нет пока что связи с серверной частью
 
 const mockFiles = __webpack_require__(/*! ../../mockFiles.json */ "./mockFiles.json");
 
@@ -441,7 +451,7 @@ const {
   TYPES
 } = __webpack_require__(/*! ../actions/files.js */ "./src/scripts/redux/actions/files.js");
 
-const files = (state = [], action) => {
+const files = (state = {}, action) => {
   switch (action.type) {
     case TYPES.SET_FILES:
       return setFiles(state, action);
@@ -521,6 +531,136 @@ module.exports = (_temp = class FileFilterView extends View {
   }
 
 }, _temp);
+
+/***/ }),
+
+/***/ "./src/scripts/view/FileListMobile.js":
+/*!********************************************!*\
+  !*** ./src/scripts/view/FileListMobile.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
+
+module.exports = class FileListView extends View {
+  /**
+   * @param {{files: {}}} state
+   * @returns {string}
+   */
+  render(state) {
+    let files = [];
+
+    for (let index in state.files) {
+      if (state.files.hasOwnProperty(index)) {
+        files.push(this.renderFile(state.files[index]));
+      }
+    }
+
+    return files.join('');
+  }
+
+  /**
+   * @param {{name: string,ext:string,hash:string,date:string,message:string,committer: string}} file
+   * @returns {string}
+   */
+  renderFile(file) {
+    const shortHash = file.hash.slice(0, 6);
+    return `
+            <div class="List-Item List-Item-borderB-gray ListItem-borderB-gray">
+                <div class="IconPlus List">
+                    <div class="List-Item List-Item-indentV-5">
+                        <div class="IconPlus">
+                            <div class="IconPlus-Text List">
+                                <div class="List-Item List-Item-indentV-5">
+                                    <div class="IconPlus">
+                                        <div class="IconPlus-Icon IconPlus-Icon-marginR-8 IconFile IconFile-ext-${file.ext}"></div>
+                                        <div class="IconPlus-Text Text Text-size-14 Text-lHeight-20 Text-color-black Text-width-bold">${file.name}</div>
+                                    </div>
+                                </div>
+                                <div class="List-Item List-Item-indentV-5">
+                                            <span class="Text Text-size-14 Text-lHeight-20 Text-color-black">${file.message}</span>
+                                </div>
+                                <div class="List-Item List-Item-indentV-5">
+                                    <a class="Text Text-color-link Text-size-14 Text-lHeight-20 Text-underline-non Text-marginR-8"
+                                       href="#">${shortHash}</a>
+                                    <span class="Text Text-color-black Text-size-14 Text-lHeight-20">
+                                                by ${file.committer}, ${file.date}
+                                            </span>
+                                </div>
+                            </div>
+                            <div class="IconPlus-Icon IconPlus-Icon-marginL-8 IconNav IconNav-arrow-right">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+  }
+
+};
+
+/***/ }),
+
+/***/ "./src/scripts/view/FileListTable.js":
+/*!*******************************************!*\
+  !*** ./src/scripts/view/FileListTable.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+const View = __webpack_require__(/*! ../redux/View.js */ "./src/scripts/redux/View.js");
+
+module.exports = class FileListTableView extends View {
+  /**
+   * @param {{files: {}}} state
+   * @returns {string}
+   */
+  render(state) {
+    let files = [];
+
+    for (let index in state.files) {
+      if (state.files.hasOwnProperty(index)) {
+        files.push(this.renderFile(state.files[index]));
+      }
+    }
+
+    return files.join('');
+  }
+
+  /**
+   * @param {{name: string,ext:string,hash:string,date:string,message:string,committer: string}} file
+   * @returns {string}
+   */
+  renderFile(file) {
+    const shortHash = file.hash.slice(0, 6);
+    return `<tr class="Table-Row">
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <div class="IconPlus">
+                        <div class="IconPlus-Icon IconPlus-Icon-marginR-8 IconFile IconFile-ext-${file.ext}">
+                        </div>
+                        <div class="IconPlus-Text Text Text-lHeight-20 Text-size-14 Text-color-black Text-width-bold">
+                            ${file.name}
+                        </div>
+                    </div>
+                </td>
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <a href="#" class="Text Text-color-link Text-underline-non Text-size-14 Text-lHeight-20">${shortHash}</a>
+                </td>
+                <td class="Table-Cell Table-Cell-width-4 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <span class="Text Text-size-14 Text-lHeight-20 Text-color-black">${file.message}</span>
+                </td>
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18">
+                    <span class="Text Text-color-black Text-size-14 Text-lHeight-20">
+                        <span class="Text-FirstSymbol">${file.committer.slice(0, 1)}</span>${file.committer.slice(1)}
+                    </span>
+                </td>
+                <td class="Table-Cell Table-Cell-width-2 Table-Cell-borderB-light Table-Cell-indentH-8 Table-Cell-indentB-12 Table-Cell-indentT-18 Table-Cell-align-right">
+                    <span class="Text Text-color-black Text-size-14 Text-lHeight-20">${file.date}</span>
+                </td>
+            </tr>`;
+  }
+
+};
 
 /***/ }),
 

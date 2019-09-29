@@ -1,6 +1,6 @@
 const {TYPES} = require('../actions/files.js');
 
-const files = (state = [], action) => {
+const files = (state = {}, action) => {
     switch (action.type) {
         case TYPES.SET_FILES:
             return setFiles(state, action);

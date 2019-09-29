@@ -9,6 +9,14 @@ const FileFilter = require('./view/FileFilter.js');
 const FileFilterContainer = document.getElementsByClassName('FileFilter')[0];
 new FileFilter(FileFilterContainer, store);
 
+const FileListTable = require('./view/FileListTable.js');
+const FileListTableContainer = document.getElementsByClassName('Table-Body')[0];
+new FileListTable(FileListTableContainer, store);
+
+const FileListMobile = require('./view/FileListMobile.js');
+const FileListMobileContainer = document.getElementsByClassName('TableMobile')[0];
+new FileListMobile(FileListMobileContainer, store);
+
 
 //todo: временный блок, т.к. нет пока что связи с серверной частью
 const mockFiles = require('../../mockFiles.json');
