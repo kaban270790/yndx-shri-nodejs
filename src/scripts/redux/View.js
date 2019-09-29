@@ -28,10 +28,6 @@ module.exports = class View {
      */
     _preRender(state) {
         const renderHTML = this.render(state);
-        console.group(this.toString());
-        console.log(renderHTML);
-        console.log(this._el.innerHTML);
-        console.groupEnd();
         if (renderHTML !== this._el.innerHTML) {
             this._el.innerHTML = renderHTML;
         }
