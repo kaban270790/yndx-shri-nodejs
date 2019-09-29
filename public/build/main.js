@@ -293,10 +293,6 @@ module.exports = (_temp = class View {
    */
 
   /**
-   * @param {Node}
-   */
-
-  /**
    * @param {Node} el
    * @param {Store} store
    */
@@ -306,8 +302,6 @@ module.exports = (_temp = class View {
     _defineProperty(this, "_store", void 0);
 
     _defineProperty(this, "_unsubscribe", void 0);
-
-    _defineProperty(this, "_renderEl", void 0);
 
     this._el = el;
     this._store = store;
@@ -321,7 +315,15 @@ module.exports = (_temp = class View {
 
 
   _preRender(state) {
-    this._el.innerHTML = this.render(state);
+    const renderHTML = this.render(state);
+    console.group(this.toString());
+    console.log(renderHTML);
+    console.log(this._el.innerHTML);
+    console.groupEnd();
+
+    if (renderHTML !== this._el.innerHTML) {
+      this._el.innerHTML = renderHTML;
+    }
   }
   /**
    * @param {*} state
@@ -538,7 +540,7 @@ module.exports = (_temp = class FileFilterView extends View {
 
 
   render(state) {
-    return `<input class="Input" placeholder="${INPUT_PLACEHOLDER}" value="${state.fileFilter.value || ''}"/>`;
+    return `<input class="Input" placeholder="${INPUT_PLACEHOLDER}" value="">`;
   }
 
   _keyUp(e) {

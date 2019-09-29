@@ -11,10 +11,6 @@ module.exports = class View {
      * @param {Function}
      */
     _unsubscribe;
-    /**
-     * @param {Node}
-     */
-    _renderEl;
 
     /**
      * @param {Node} el
@@ -31,7 +27,14 @@ module.exports = class View {
      * @param {*} state
      */
     _preRender(state) {
-        this._el.innerHTML = this.render(state);
+        const renderHTML = this.render(state);
+        console.group(this.toString());
+        console.log(renderHTML);
+        console.log(this._el.innerHTML);
+        console.groupEnd();
+        if (renderHTML !== this._el.innerHTML) {
+            this._el.innerHTML = renderHTML;
+        }
     }
 
     /**

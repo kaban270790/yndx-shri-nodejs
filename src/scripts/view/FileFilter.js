@@ -16,7 +16,7 @@ module.exports = class FileFilterView extends View {
      * @returns {string}
      */
     render(state) {
-        return `<input class="Input" placeholder="${INPUT_PLACEHOLDER}" value="${state.fileFilter.value || ''}"/>`;
+        return `<input class="Input" placeholder="${INPUT_PLACEHOLDER}" value="">`;
     };
 
     _keyUp(e) {
