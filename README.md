@@ -9,7 +9,7 @@
 ### Запуск
 
 Для запуска выполнить команду:
->npm run server --path=:pathToRepositories
+>npm run api-server-dev --path=:pathToRepositories
 
 #### Параметры:
 

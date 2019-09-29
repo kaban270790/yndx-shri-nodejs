@@ -1,0 +1,49 @@
+@import "../../params";
+
+.CommitList {
+  margin-top: 24px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  &-Date {
+    padding: 0 0 14px;
+  }
+
+  &-List {
+  }
+
+  &-Item {
+  }
+
+  &-Commits {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-Commit {
+    padding-bottom: 16px;
+  }
+
+  &-CommitData {
+    flex: 4;
+  }
+
+  &-CommitHash {
+    flex: 1;
+    min-width: 60px;
+    @media screen and (max-width: $endPointTablet) {
+      display: none;
+    }
+  }
+
+  &-CommitDiff {
+    flex-shrink: 0;
+  }
+
+  &-CommitDiffIcon {
+    display: block;
+    width: 20px;
+    height: 16px;
+    background: url(commit-diff.svg) no-repeat center;
+  }
+}

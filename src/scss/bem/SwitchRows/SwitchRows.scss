@@ -1,0 +1,46 @@
+@import "../../params";
+.SwitcherRows {
+  background-color: #f1f8ff;
+  position: relative;
+  height: 28px;
+  display: flex;
+  align-items: center;
+
+  &-Info {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+  }
+
+  &-IconBelow {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 13px;
+
+    &-deactivate {
+      background-image: url(icon-arrow-down-row-gray.svg);
+    }
+  }
+
+  &-IconAbove {
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 13px;
+
+    &-active {
+      background-image: url(icon-arrow-top-row-black.svg);
+    }
+  }
+
+  &-ButtonBelow {
+    margin-right: 32px;
+  }
+
+  &-Buttons {
+    margin: 0 auto;
+    display: flex;
+    @media screen and (max-width: $endPointTablet){
+      display: none;
+    }
+  }
+}

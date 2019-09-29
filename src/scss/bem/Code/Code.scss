@@ -1,0 +1,57 @@
+.Code {
+  &-ext {
+    &-make {
+      --codeDefailtColor: #00234b;
+      --codeDefailtWidth: lighter;
+      --codeCommentColor: #8694a2;
+      --codeCommentWidth: var(--codeDefailtWidth);
+      --codeStringColor: #005fba;
+      --codeStringWidth: var(--codeDefailtWidth);
+      --codeWordColor: var(--codeDefailtColor);
+      --codeWordWidth: bold;
+      --codeFunctionColor: #005fba;
+      --codeFunctionWidth: bold;
+      --codeTypeColor: #005fba;
+      --codeTypeWidth: bold;
+    }
+
+    &-java {
+      --codeDefailtColor: #000;
+      --codeDefailtWidth: lighter;
+      --codeCommentColor: #008f00;
+      --codeCommentWidth: var(--codeDefailtWidth);
+      --codeStringColor: #005fba;
+      --codeStringWidth: var(--codeDefailtWidth);
+      --codeWordColor: #0433ff;
+      --codeWordWidth: var(--codeDefailtWidth);
+      --codeFunctionColor: #b4261a;
+      --codeFunctionWidth: var(--codeDefailtWidth);
+      --codeTypeColor: #b4261a;
+      --codeTypeWidth: var(--codeDefailtWidth);
+    }
+  }
+
+  color: var(--codeDefailtColor);
+  font-weight: var(--codeDefailtWidth);
+
+  &-Comment {
+    color: var(--codeCommentColor);
+    font-weight: var(--codeCommentWidth);
+  }
+  &-String {
+    color: var(--codeStringColor);
+    font-weight: var(--codeStringWidth);
+  }
+  &-Word {
+    color: var(--codeWordColor);
+    font-weight: var(--codeWordWidth);
+  }
+  &-Function {
+    color: var(--codeFunctionColor);
+    font-weight: var(--codeFunctionWidth);
+  }
+  &-Type {
+    color: var(--codeTypeColor);
+    font-weight: var(--codeTypeWidth);
+  }
+}

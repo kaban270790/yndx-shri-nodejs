@@ -1,0 +1,59 @@
+@import "../../params";
+
+.List {
+  display: flex;
+  flex-direction: column;
+
+
+  &-displayPc {
+    &-none {
+      @media screen and (min-width: $endPointTablet) {
+        display: none;
+      }
+    }
+  }
+
+  &-indentH {
+    &-22 {
+      padding-right: 22px;
+      padding-left: 22px;
+    }
+
+    &-12 {
+      padding-right: 12px;
+      padding-left: 12px;
+    }
+  }
+
+  &-indentV {
+    &-6 {
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+
+  &-Item {
+
+    &-indentV {
+      &-5 {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+
+      &-8 {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+    }
+
+    &-borderB {
+      &-gray {
+        border-bottom: 1px solid #e5e5e5;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+.DiffRow {
+  display: flex;
+
+  &-background {
+    &-remove {
+      background-color: #ffeee0;
+    }
+
+    &-add {
+      background-color: #e6ffed;
+    }
+  }
+
+  &-LineNum {
+    width: 38px;
+    margin-right: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &-Text {
+    flex-grow: 1;
+  }
+}

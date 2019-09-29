@@ -1,0 +1,11 @@
+.IconDiff {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 13px;
+
+  &-mode {
+    &-m {
+      background-image: url(icon-diff-m.svg);
+    }
+  }
+}

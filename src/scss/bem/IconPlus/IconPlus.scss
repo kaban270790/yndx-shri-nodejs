@@ -1,0 +1,42 @@
+.IconPlus {
+  display: flex;
+  position: relative;
+
+  &-Icon {
+    flex-shrink: 0;
+
+    &-marginL {
+      &-8 {
+        margin-left: 8px;
+      }
+    }
+
+    &-marginR {
+      &-8 {
+        margin-right: 8px;
+      }
+
+      &-6 {
+        margin-right: 6px;
+      }
+
+      &-12 {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  &-Text {
+    flex-grow: 1;
+    display: flex;
+
+    &-align {
+      &-center {
+        align-items: center;
+      }
+      &-left {
+        align-items: flex-start;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.IconFile {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 12px;
+
+  &-ext {
+    &-folder {
+      background-image: url(folder.svg);
+    }
+    &-text {
+      background-image: url(text.svg);
+    }
+    &-code {
+      background-image: url(code.svg);
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.Commit {
+  display: flex;
+
+  &-CommitterPhoto {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-image: url(commiter-photo.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 12px;
+  }
+
+  &-LineLink {
+    width: 2px;
+    position: absolute;
+    box-sizing: border-box;
+    background-color: #b8bec3;
+    bottom: -14px;
+    top: 42px;
+    left: 19px;
+  }
+  &-Info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &-Header {
+    &-marginB {
+      &-2 {
+        margin-bottom: 2px;
+      }
+    }
+  }
+
+  &-Article {
+    &-marginB {
+      &-4 {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+}

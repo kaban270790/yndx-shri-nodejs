@@ -1,0 +1,139 @@
+.Text {
+  font-family: sans-serif;
+
+  &-FirstSymbol {
+    color: #FF3029;
+  }
+
+  &-size {
+    &-14 {
+      font-size: 14px;
+    }
+
+    &-16 {
+      font-size: 16px;
+    }
+
+    &-12 {
+      font-size: 12px;
+    }
+
+    &-13 {
+      font-size: 13px;
+    }
+
+    &-24 {
+      font-size: 24px;
+    }
+  }
+
+  &-lHeight {
+    &-13 {
+      line-height: 13px;
+    }
+
+    &-15 {
+      line-height: 15px;
+    }
+
+    &-18 {
+      line-height: 18px;
+    }
+
+    &-20 {
+      line-height: 20px;
+    }
+
+    &-28 {
+      line-height: 28px;
+    }
+  }
+
+  &-width {
+    &-bold {
+      font-weight: bold;
+    }
+
+    &-normal {
+      font-weight: normal;
+    }
+
+    &-lighter {
+      font-weight: lighter;
+    }
+  }
+
+  &-marginR {
+    &-3 {
+      margin-right: 3px;
+    }
+
+    &-8 {
+      margin-right: 8px;
+    }
+
+    &-16 {
+      margin-right: 16px;
+    }
+
+    &-24 {
+      margin-right: 24px;
+    }
+  }
+
+  &-color {
+    &-black {
+      color: #000
+    }
+
+    &-gray {
+      color: #7f8285;
+    }
+
+    &-lightGray {
+      color: #b8bec3;
+    }
+
+    &-darkGray {
+      color: #999;
+    }
+
+    &-link {
+      color: #1174e9;
+    }
+
+    &-smokyWhite {
+      color: #f2f2f2;
+    }
+
+    &-blueGray {
+      color: #434445;
+    }
+
+    &-cntAdd {
+      color: #19bc4d;
+    }
+
+    &-cntRemove {
+      color: #ff3029;
+    }
+  }
+
+  &-underline {
+    &-non {
+      text-decoration: none;
+    }
+  }
+
+  &-transform {
+    &-uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  &-whiteSpace {
+    &-preWrap {
+      white-space: pre-wrap;
+    }
+  }
+}
